@@ -1,322 +1,533 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Приглашение на день рождения · Слава</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@400;600;700&display=swap');
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Приглашение на день рождения · Слава</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;600;700&display=swap');
 
-        :root {
-            --gold: #f4d03f;
-            --gold-2: #e6b800;
-            --dark: #0d0d0d;
-        }
+:root{ --gold:#f4d03f; --gold2:#e6b800; --ink:#0b0b0d; }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+*{ margin:0; padding:0; box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  font-family:'Poppins',system-ui,sans-serif;
+  background:#0b0b0d; color:#fff; overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #0a0a0a, #1f1f1f);
-            color: #fff;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
+/* ===== конфетти-канвас ===== */
+#fx{ position:fixed; inset:0; pointer-events:none; z-index:9000; }
 
-        /* ============ КОНВЕРТ (первый экран) ============ */
-        #envelope {
-            position: fixed;
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: radial-gradient(circle at 50% 28%, #262626, #0a0a0a 72%);
-            z-index: 100;
-            cursor: pointer;
-            transition: opacity .8s ease, transform .8s ease;
-        }
-        #envelope.opened { opacity: 0; transform: scale(1.12); pointer-events: none; }
+/* ===== снег/боке (ambient) ===== */
+.ambient{ position:fixed; inset:0; pointer-events:none; z-index:1; overflow:hidden; }
+.ambient i{
+  position:absolute; top:-10vh; border-radius:50%;
+  background:radial-gradient(circle, rgba(255,255,255,.85), rgba(255,255,255,0) 70%);
+  animation:fall linear infinite;
+}
+@keyframes fall{
+  0%{ transform:translateY(-10vh) translateX(0) scale(1); opacity:0; }
+  10%{ opacity:.9; }
+  100%{ transform:translateY(115vh) translateX(40px) scale(.6); opacity:0; }
+}
 
-        .env-headline { text-align: center; margin-bottom: 38px; padding: 0 20px; }
-        .env-headline .inviter {
-            font-size: 15px; letter-spacing: 6px; text-transform: uppercase;
-            color: var(--gold); opacity: .95; font-weight: 600;
-        }
-        .env-headline h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(34px, 7vw, 52px);
-            margin: 12px 0 8px;
-        }
-        .env-headline p { font-size: 17px; opacity: .75; }
+/* ================= КОНВЕРТ ================= */
+#envelope{
+  position:fixed; inset:0; z-index:100;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  background:
+    radial-gradient(circle at 50% 25%, rgba(244,208,63,.14), transparent 55%),
+    linear-gradient(160deg,#141414,#070707 70%);
+  cursor:pointer; transition:opacity .9s ease, transform .9s ease, filter .9s ease;
+}
+#envelope.opened{ opacity:0; transform:scale(1.18); filter:blur(6px); pointer-events:none; }
 
-        .env-wrap { position: relative; width: min(560px, 92vw); height: 380px; perspective: 1200px; }
+.brandline{
+  font-size:13px; letter-spacing:8px; text-transform:uppercase;
+  color:var(--gold); opacity:.95; font-weight:600;
+}
+#envelope h1{
+  font-family:'Playfair Display',serif; font-weight:900;
+  font-size:clamp(38px,8vw,68px); line-height:1.05;
+  margin:16px 0 10px; text-align:center;
+  background:linear-gradient(120deg,#fff 10%,var(--gold) 50%,#fff 90%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+#envelope .sub{ font-size:16px; opacity:.7; text-align:center; padding:0 24px; }
 
-        .envelope {
-            position: absolute; inset: 0;
-            background: linear-gradient(180deg, #3a2f1f, #241c12);
-            border-radius: 16px;
-            box-shadow: 0 40px 90px rgba(0,0,0,.85), inset 0 0 120px rgba(255,200,50,.14);
-            overflow: hidden;
-        }
-        .envelope::before {
-            content: ''; position: absolute; inset: 0;
-            background: linear-gradient(45deg, rgba(255,255,255,.1) 0%, transparent 50%, rgba(0,0,0,.35) 100%);
-            animation: shine 5s linear infinite;
-        }
-        @keyframes shine { 0% { transform: translateX(-30%); } 100% { transform: translateX(30%); } }
+.env-wrap{ perspective:1400px; margin:38px 0 0; }
+.envelope{
+  position:relative; width:min(540px,90vw); height:min(350px,58vw);
+  background:linear-gradient(180deg,#463721,#241c12);
+  border-radius:16px; overflow:hidden;
+  box-shadow:0 50px 90px rgba(0,0,0,.85), inset 0 0 120px rgba(255,200,50,.16);
+  transform-style:preserve-3d;
+}
+.envelope::after{
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(45deg,rgba(255,255,255,.10),transparent 45%,rgba(0,0,0,.4));
+  animation:shine 6s linear infinite;
+}
+@keyframes shine{ 0%{transform:translateX(-30%);} 100%{transform:translateX(30%);} }
 
-        .flap {
-            position: absolute; top: 0; left: 0; width: 100%; height: 55%;
-            background: linear-gradient(180deg, #4a3b24, #2c2317);
-            clip-path: polygon(0 0, 100% 0, 50% 100%);
-            transform-origin: top;
-            transition: transform .7s cubic-bezier(.6, -0.1, .4, 1);
-            z-index: 3;
-        }
-        .envelope.open .flap { transform: rotateX(180deg); }
+.flap{
+  position:absolute; top:0; left:0; width:100%; height:56%;
+  background:linear-gradient(180deg,#5a4728,#33280f);
+  clip-path:polygon(0 0,100% 0,50% 100%);
+  transform-origin:top; transition:transform .8s cubic-bezier(.6,-.1,.4,1); z-index:4;
+}
+.envelope.open .flap{ transform:rotateX(180deg); }
 
-        .seal {
-            position: absolute; top: calc(55% - 42px); left: 50%;
-            transform: translateX(-50%);
-            width: 84px; height: 84px; border-radius: 50%;
-            background: radial-gradient(circle at 35% 30%, #e0485a, #a50d26);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 36px;
-            box-shadow: 0 0 0 12px rgba(165,13,38,.22), 0 10px 24px rgba(0,0,0,.55);
-            z-index: 6;
-            transition: opacity .4s ease, transform .4s ease;
-        }
-        .envelope.open .seal { opacity: 0; transform: translateX(-50%) scale(.4); }
+.wax{
+  position:absolute; left:50%; top:calc(56% - 40px); transform:translateX(-50%);
+  width:80px; height:80px; border-radius:50%;
+  background:radial-gradient(circle at 34% 30%,#e2546a,#9d0c24);
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Playfair Display',serif; font-weight:900; font-size:26px; color:#ffd9df;
+  box-shadow:0 0 0 12px rgba(157,12,36,.22), 0 12px 26px rgba(0,0,0,.6);
+  z-index:6; transition:opacity .4s, transform .4s;
+}
+.envelope.open .wax{ opacity:0; transform:translateX(-50%) scale(.35) rotate(40deg); }
 
-        .env-inner {
-            position: absolute; inset: 0;
-            display: flex; flex-direction: column;
-            align-items: center; justify-content: flex-end;
-            padding-bottom: 42px;
-            z-index: 2;
-        }
-        .env-inner .env-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 30px; color: var(--gold);
-            text-shadow: 0 6px 15px rgba(0,0,0,.7);
-        }
-        .env-inner .env-sub { font-size: 14px; letter-spacing: 3px; opacity: .8; margin: 6px 0 24px; }
+.env-note{
+  position:absolute; inset:0; display:flex; flex-direction:column;
+  align-items:center; justify-content:flex-end; padding-bottom:38px; z-index:2;
+}
+.env-note .t{ font-family:'Playfair Display',serif; font-size:30px; color:var(--gold); }
+.env-note .s{ font-size:13px; letter-spacing:4px; opacity:.8; margin:6px 0 22px; }
 
-        .btn {
-            background: #1a1a1a; color: var(--gold);
-            border: 3px solid var(--gold); padding: 15px 46px;
-            font-size: 17px; font-weight: 700; letter-spacing: 3px;
-            cursor: pointer; text-transform: uppercase;
-            box-shadow: 0 10px 0 #000; transition: all .3s;
-            position: relative; z-index: 10;
-        }
-        .btn:hover { transform: translateY(-6px); box-shadow: 0 16px 0 #000; }
+.btn{
+  position:relative; z-index:8;
+  background:linear-gradient(180deg,#1d1d1d,#101010);
+  color:var(--gold); border:2.5px solid var(--gold);
+  padding:16px 44px; font:700 16px/1 'Poppins',sans-serif; letter-spacing:3px;
+  text-transform:uppercase; cursor:pointer; border-radius:60px;
+  box-shadow:0 10px 0 #000, 0 0 30px rgba(244,208,63,.25);
+  transition:transform .25s, box-shadow .25s, background .25s;
+}
+.btn:hover{ transform:translateY(-5px); box-shadow:0 15px 0 #000, 0 0 45px rgba(244,208,63,.5); }
+.btn:active{ transform:translateY(2px); box-shadow:0 5px 0 #000; }
 
-        .hint { margin-top: 28px; font-size: 14px; color: var(--gold); opacity: .6; animation: blink 2s infinite; }
-        @keyframes blink { 50% { opacity: 1; } }
+.hint{ margin-top:26px; font-size:13px; color:var(--gold); opacity:.55; animation:blink 2.2s infinite; }
+@keyframes blink{ 50%{opacity:1;} }
 
-        /* ============ ПРИГЛАШЕНИЕ (вторая часть) ============ */
-        #invitation {
-            display: none;
-            min-height: 100vh;
-            padding: 60px 20px;
-            background:
-                radial-gradient(circle at 15% 15%, rgba(244,208,63,.10), transparent 40%),
-                radial-gradient(circle at 85% 80%, rgba(244,208,63,.08), transparent 40%),
-                linear-gradient(135deg, #0a0a0a, #1f1f1f);
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transform: scale(.9);
-            transition: opacity .8s ease, transform .8s ease;
-        }
-        #invitation.show { display: flex; opacity: 1; transform: scale(1); }
+/* ================= ПРИГЛАШЕНИЕ ================= */
+#invitation{ display:none; opacity:0; transition:opacity 1s ease; position:relative; z-index:2; }
+#invitation.show{ display:block; opacity:1; }
 
-        .card {
-            width: min(760px, 100%);
-            background: rgba(15,15,15,.96);
-            border: 1px solid rgba(244,208,63,.25);
-            border-radius: 26px;
-            box-shadow: 0 50px 100px rgba(0,0,0,.9), inset 0 0 120px rgba(244,208,63,.1);
-            padding: 52px 46px;
-            text-align: center;
-        }
+section{ padding:90px 20px; }
+.wrap{ max-width:1080px; margin:0 auto; }
 
-        .stamp {
-            display: inline-block;
-            background: var(--gold); color: #1a1a1a;
-            padding: 9px 30px; border-radius: 40px;
-            font-size: 14px; font-weight: 700; letter-spacing: 2.5px;
-            box-shadow: 0 8px 20px rgba(0,0,0,.5);
-            margin-bottom: 26px;
-        }
+/* hero */
+.hero{
+  position:relative; min-height:100vh; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; text-align:center; overflow:hidden;
+  padding:120px 20px 90px;
+}
+.hero-bg{
+  position:absolute; inset:-8% 0; z-index:-2;
+  background:url('images/img_0178.jpg') center/cover no-repeat;
+  will-change:transform;
+}
+.hero::after{
+  content:''; position:absolute; inset:0; z-index:-1;
+  background:linear-gradient(180deg, rgba(8,8,10,.72), rgba(8,8,10,.86) 60%, #0b0b0d);
+}
+.hero .kicker{ font-size:13px; letter-spacing:7px; text-transform:uppercase; color:var(--gold); }
+.hero h2{
+  font-family:'Playfair Display',serif; font-weight:900;
+  font-size:clamp(44px,10vw,96px); line-height:1; margin:14px 0 6px;
+  background:linear-gradient(120deg,#fff,var(--gold) 55%,#fff);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  text-shadow:0 0 60px rgba(244,208,63,.25);
+}
+.hero .name{ font-family:'Playfair Display',serif; font-size:clamp(26px,5vw,44px); color:var(--gold); }
+.hero .lead{ max-width:640px; font-size:17px; line-height:1.75; opacity:.9; margin:22px auto 0; }
 
-        .card h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(34px, 6vw, 52px);
-            color: var(--gold);
-            text-shadow: 0 0 25px rgba(244,208,63,.6);
-        }
-        .card .who { font-size: 19px; margin: 10px 0 6px; opacity: .92; }
+.pill{
+  display:inline-block; margin-top:26px; padding:10px 26px; border-radius:60px;
+  background:rgba(244,208,63,.12); border:1px dashed rgba(244,208,63,.55);
+  font-size:15px; line-height:1.6;
+}
+.pill b{ color:var(--gold); }
 
-        .date-note {
-            margin: 22px auto 6px; max-width: 580px;
-            background: rgba(244,208,63,.12);
-            border: 1px dashed rgba(244,208,63,.5);
-            border-radius: 14px; padding: 16px 22px;
-            font-size: 16px; line-height: 1.65;
-        }
-        .date-note strong { color: var(--gold); }
+/* countdown */
+.count{ display:flex; gap:14px; margin-top:34px; flex-wrap:wrap; justify-content:center; }
+.count .cell{
+  min-width:92px; padding:16px 10px; border-radius:16px;
+  background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12);
+  backdrop-filter:blur(8px);
+}
+.count .n{ font-family:'Playfair Display',serif; font-size:38px; color:var(--gold); line-height:1; }
+.count .l{ font-size:11px; letter-spacing:2px; text-transform:uppercase; opacity:.7; margin-top:7px; }
 
-        .grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
-            margin: 32px 0 8px; text-align: left;
-        }
-        .box {
-            background: rgba(255,255,255,.04);
-            border: 1px solid rgba(255,255,255,.08);
-            border-radius: 16px; padding: 20px 22px;
-            transition: transform .3s, border-color .3s;
-        }
-        .box:hover { transform: translateY(-4px); border-color: rgba(244,208,63,.4); }
-        .box .ico { font-size: 30px; margin-bottom: 10px; }
-        .box h3 { color: var(--gold); font-size: 15px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
-        .box p { font-size: 16px; line-height: 1.6; opacity: .93; }
-        .box p strong { color: #fff; font-size: 18px; }
+.scroll-hint{ position:absolute; bottom:26px; left:50%; transform:translateX(-50%); font-size:22px; color:var(--gold); opacity:.6; animation:bob 2s infinite; }
+@keyframes bob{ 0%,100%{transform:translate(-50%,0);} 50%{transform:translate(-50%,10px);} }
 
-        .photos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 28px 0 8px; }
-        .photos figure { border-radius: 14px; overflow: hidden; box-shadow: 0 10px 24px rgba(0,0,0,.5); aspect-ratio: 4 / 3; background: #222; }
-        .photos img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* reveal */
+.reveal{ opacity:0; transform:translateY(38px); transition:opacity .9s cubic-bezier(.2,.7,.3,1), transform .9s cubic-bezier(.2,.7,.3,1); }
+.reveal.in{ opacity:1; transform:none; }
 
-        .closing {
-            font-family: 'Playfair Display', serif;
-            font-size: 26px; color: var(--gold); margin-top: 28px;
-            animation: pulse 2.2s infinite;
-        }
-        .sign { margin-top: 6px; font-size: 17px; opacity: .8; }
-        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+.sec-title{
+  font-family:'Playfair Display',serif; font-weight:900; text-align:center;
+  font-size:clamp(30px,5vw,48px); color:var(--gold); margin-bottom:12px;
+}
+.sec-sub{ text-align:center; opacity:.75; max-width:620px; margin:0 auto 46px; line-height:1.7; }
 
-        .back-btn {
-            margin-top: 30px; background: rgba(255,255,255,.1); color: #fff;
-            border: none; padding: 13px 32px; font-size: 15px; cursor: pointer;
-            border-radius: 40px; transition: all .3s;
-        }
-        .back-btn:hover { background: var(--gold); color: #1a1a1a; }
+/* info grid */
+.grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
+.box{
+  background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.02));
+  border:1px solid rgba(255,255,255,.1); border-radius:20px; padding:26px 26px;
+  backdrop-filter:blur(10px); transition:transform .35s, border-color .35s, box-shadow .35s;
+}
+.box:hover{ transform:translateY(-6px); border-color:rgba(244,208,63,.5); box-shadow:0 24px 50px rgba(0,0,0,.5); }
+.box .ico{ font-size:34px; margin-bottom:12px; }
+.box h3{ color:var(--gold); font-size:14px; letter-spacing:3px; text-transform:uppercase; margin-bottom:10px; }
+.box p{ font-size:16px; line-height:1.7; opacity:.93; }
+.box p b{ color:#fff; font-size:17px; }
 
-        @media (max-width: 640px) {
-            .grid { grid-template-columns: 1fr; }
-            .photos { grid-template-columns: 1fr 1fr; }
-            .card { padding: 34px 22px; }
-        }
-    </style>
+/* gallery */
+.gallery{ display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:14px; }
+.gallery figure{
+  position:relative; margin:0; border-radius:16px; overflow:hidden; cursor:pointer;
+  aspect-ratio:4/3; background:#191919; box-shadow:0 12px 28px rgba(0,0,0,.45);
+}
+.gallery img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform .6s cubic-bezier(.2,.7,.3,1); }
+.gallery figure:hover img{ transform:scale(1.1); }
+.gallery figcaption{
+  position:absolute; left:0; right:0; bottom:0; padding:22px 12px 10px;
+  font-size:13px; font-weight:600; letter-spacing:.3px;
+  background:linear-gradient(transparent,rgba(0,0,0,.85));
+  transform:translateY(6px); opacity:0; transition:.4s;
+}
+.gallery figure:hover figcaption{ transform:none; opacity:1; }
+.gallery figure:nth-child(1),.gallery figure:nth-child(6){ grid-column:span 2; grid-row:span 2; }
+
+/* lightbox */
+#lightbox{
+  position:fixed; inset:0; z-index:9500; display:none;
+  align-items:center; justify-content:center; background:rgba(4,4,6,.94);
+  backdrop-filter:blur(6px); padding:24px; opacity:0; transition:opacity .35s;
+}
+#lightbox.show{ display:flex; opacity:1; }
+#lightbox img{ max-width:94vw; max-height:82vh; border-radius:14px; box-shadow:0 30px 80px rgba(0,0,0,.8); }
+#lightbox .cap{ position:absolute; bottom:26px; left:50%; transform:translateX(-50%); font-size:15px; color:var(--gold); letter-spacing:1px; }
+#lightbox .close{ position:absolute; top:20px; right:26px; font-size:34px; color:#fff; cursor:pointer; opacity:.8; }
+#lightbox .close:hover{ opacity:1; }
+
+/* cta */
+.cta{ text-align:center; }
+.cta .big{ font-family:'Playfair Display',serif; font-size:clamp(28px,6vw,54px); color:var(--gold); text-shadow:0 0 40px rgba(244,208,63,.5); }
+.cta .sign{ font-family:'Playfair Display',serif; font-size:26px; margin-top:10px; opacity:.9; }
+.cta .stage{
+  margin-top:40px; border-radius:24px; overflow:hidden; position:relative; max-width:860px; margin-left:auto; margin-right:auto;
+  box-shadow:0 30px 70px rgba(0,0,0,.6);
+}
+.cta .stage img{ width:100%; display:block; }
+.cta .stage .cap{
+  position:absolute; inset:auto 0 0 0; padding:30px 20px 16px; font-size:14px; letter-spacing:1px;
+  background:linear-gradient(transparent,rgba(0,0,0,.85));
+}
+.back-btn{
+  margin-top:34px; background:rgba(255,255,255,.1); color:#fff; border:none;
+  padding:14px 34px; border-radius:60px; font:600 15px 'Poppins',sans-serif; cursor:pointer; transition:.3s;
+}
+.back-btn:hover{ background:var(--gold); color:#141414; }
+
+footer{ text-align:center; padding:40px 20px 60px; font-size:13px; opacity:.45; }
+
+@media(max-width:700px){
+  .grid{ grid-template-columns:1fr; }
+  .gallery{ grid-template-columns:repeat(2,1fr); }
+  .gallery figure:nth-child(1),.gallery figure:nth-child(6){ grid-column:span 2; grid-row:auto; }
+  .count .cell{ min-width:74px; }
+  section{ padding:66px 16px; }
+}
+</style>
 </head>
 <body>
 
-    <!-- ==================== КОНВЕРТ ==================== -->
-    <div id="envelope" role="button" tabindex="0" aria-label="Открыть конверт">
-        <div class="env-headline">
-            <div class="inviter">Слава приглашает тебя</div>
-            <h1>На день рождения</h1>
-            <p>Ты получил(а) персональное приглашение</p>
-        </div>
+<canvas id="fx"></canvas>
+<div class="ambient" id="ambient"></div>
 
-        <div class="env-wrap">
-            <div class="envelope" id="envelopeBox">
-                <div class="flap"></div>
-                <div class="seal">🎂</div>
-                <div class="env-inner">
-                    <div class="env-title">Приглашение</div>
-                    <div class="env-sub">ОТКРОЙ МЕНЯ</div>
-                    <button class="btn" id="openBtn" type="button">Открыть конверт ✉️</button>
-                </div>
-            </div>
-        </div>
+<!-- ======================= КОНВЕРТ ======================= -->
+<div id="envelope" role="button" tabindex="0" aria-label="Открыть приглашение">
+  <div class="brandline">Слава приглашает тебя</div>
+  <h1>На день рождения</h1>
+  <div class="sub">Тебе пришло персональное приглашение — открой конверт 🎄</div>
 
-        <div class="hint">нажми на конверт</div>
+  <div class="env-wrap">
+    <div class="envelope" id="envelopeBox">
+      <div class="flap"></div>
+      <div class="wax">С&nbsp;Д</div>
+      <div class="env-note">
+        <div class="t">Приглашение</div>
+        <div class="s">НАЖМИ, ЧТОБЫ ОТКРЫТЬ</div>
+        <button class="btn" id="openBtn" type="button">Открыть ✉️</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="hint">нажми на конверт или кнопку</div>
+</div>
+
+<!-- ======================= ПРИГЛАШЕНИЕ ======================= -->
+<main id="invitation">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="kicker">Арт-парк «Штыковские пруды»</div>
+    <h2>С днём рождения!</h2>
+    <div class="name">Слава приглашает тебя 🎉</div>
+    <p class="lead">
+      Отмечаю свой день рождения на природе: баня в лесу, зимние забавы у пруда,
+      шашлык и тёплая компания. Буду очень рад видеть именно тебя!
+    </p>
+    <div class="pill">
+      🗓️ День рождения — <b>1 декабря</b>, а празднуем <b>5 декабря 2026</b><br>
+      📍 Штыковские пруды, Приморский край, район Артём
     </div>
 
-    <!-- ==================== ПРИГЛАШЕНИЕ ==================== -->
-    <div id="invitation">
-        <div class="card">
-            <span class="stamp">📍 Штыковские пруды · Приморский край</span>
-
-            <h2>С днём рождения! 🎉</h2>
-            <div class="who">Приглашаю тебя отпраздновать мой день рождения</div>
-
-            <div class="date-note">
-                🗓️ Мой день рождения — <strong>1 декабря</strong>, но отмечать буду <strong>5 декабря 2026 года</strong>.<br>
-                Празднуем позже, чтобы всё успеть организовать — и чтобы ты точно смог(ла) прийти!
-            </div>
-
-            <div class="grid">
-                <div class="box">
-                    <div class="ico">🎁</div>
-                    <h3>Что</h3>
-                    <p>Празднуем день рождения на природе: <strong>баня в лесу</strong>, купание в пруду, шашлык и тёплая компания.</p>
-                </div>
-                <div class="box">
-                    <div class="ico">📍</div>
-                    <h3>Где</h3>
-                    <p><strong>Штыковские пруды</strong>, Приморский край, район Артём.</p>
-                </div>
-                <div class="box">
-                    <div class="ico">🕒</div>
-                    <h3>Когда</h3>
-                    <p><strong>5 декабря 2026</strong><br>с 15:00 до 18:00 (примерно 3 часа).</p>
-                </div>
-                <div class="box">
-                    <div class="ico">🧖</div>
-                    <h3>Как</h3>
-                    <p>Приходи к 15:00, возьми с собой <strong>купальник/плавки, полотенце</strong> и хорошее настроение — остальное организую.</p>
-                </div>
-            </div>
-
-            <div class="photos">
-                <figure><img src="https://shtprudy.ru/wp-content/uploads/2024/09/shtykovskie-prudy-proud.jpg" alt="Пруд" onerror="this.parentElement.style.display='none'"></figure>
-                <figure><img src="https://shtprudy.ru/wp-content/uploads/2024/10/shtykovskie-prudy-park.jpg" alt="Парк" onerror="this.parentElement.style.display='none'"></figure>
-                <figure><img src="https://shtprudy.ru/wp-content/uploads/2024/09/shtykovskie-prudy-forest.jpg" alt="Лес" onerror="this.parentElement.style.display='none'"></figure>
-                <figure><img src="https://shtprudy.ru/wp-content/uploads/2024/10/shtykovskie-prudy-banquet.jpg" alt="Банкет" onerror="this.parentElement.style.display='none'"></figure>
-            </div>
-
-            <div class="closing">Буду очень рад тебя видеть! 🎉</div>
-            <div class="sign">— Слава</div>
-
-            <button class="back-btn" id="backBtn" type="button">← Вернуться к конверту</button>
-        </div>
+    <div class="count" id="countdown">
+      <div class="cell"><div class="n" id="cd-d">–</div><div class="l">дней</div></div>
+      <div class="cell"><div class="n" id="cd-h">–</div><div class="l">часов</div></div>
+      <div class="cell"><div class="n" id="cd-m">–</div><div class="l">минут</div></div>
+      <div class="cell"><div class="n" id="cd-s">–</div><div class="l">секунд</div></div>
     </div>
 
-    <script>
-        const envelope = document.getElementById('envelope');
-        const envelopeBox = document.getElementById('envelopeBox');
-        const invitation = document.getElementById('invitation');
-        const openBtn = document.getElementById('openBtn');
-        const backBtn = document.getElementById('backBtn');
+    <div class="scroll-hint">⌄</div>
+  </section>
 
-        function openInvitation() {
-            envelopeBox.classList.add('open');       // откидываем клапан конверта
-            setTimeout(() => {
-                envelope.classList.add('opened');    // конверт растворяется
-                invitation.classList.add('show');    // показываем приглашение
-                invitation.style.display = 'flex';
-            }, 750);
-        }
+  <!-- ЧТО / ГДЕ / КОГДА / КАК -->
+  <section>
+    <div class="wrap">
+      <h2 class="sec-title reveal">Что, где, когда и как</h2>
+      <p class="sec-sub reveal">Коротко о главном, чтобы ты всё знал(а) заранее.</p>
 
-        function closeInvitation() {
-            invitation.classList.remove('show');
-            setTimeout(() => {
-                invitation.style.display = 'none';
-                envelopeBox.classList.remove('open');
-                envelope.classList.remove('opened');
-            }, 700);
-        }
+      <div class="grid">
+        <div class="box reveal">
+          <div class="ico">🎁</div>
+          <h3>Что</h3>
+          <p>Празднуем мой день рождения на природе: <b>баня в лесу</b>, купание в пруду,
+             шашлык, зимние забавы и много общения.</p>
+        </div>
+        <div class="box reveal">
+          <div class="ico">📍</div>
+          <h3>Где</h3>
+          <p><b>Арт-парк «Штыковские пруды»</b><br>Приморский край, район Артём.</p>
+        </div>
+        <div class="box reveal">
+          <div class="ico">🕒</div>
+          <h3>Когда</h3>
+          <p><b>5 декабря 2026</b><br>с 15:00 до 18:00 (примерно 3 часа).</p>
+        </div>
+        <div class="box reveal">
+          <div class="ico">🧖</div>
+          <h3>Как</h3>
+          <p>Приходи к 15:00, возьми <b>купальник/плавки, полотенце и тёплую одежду</b> —
+             остальное я организую.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        envelope.addEventListener('click', openInvitation);
-        openBtn.addEventListener('click', (e) => { e.stopPropagation(); openInvitation(); });
-        backBtn.addEventListener('click', closeInvitation);
-        envelope.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openInvitation(); }
-        });
-    </script>
+  <!-- ГАЛЕРЕЯ -->
+  <section style="background:linear-gradient(180deg,#0b0b0d,#111114,#0b0b0d)">
+    <div class="wrap">
+      <h2 class="sec-title reveal">Как там красиво 📸</h2>
+      <p class="sec-sub reveal">Фотографии места, где пройдёт праздник — пруды, баня, лес и зимние развлечения.</p>
+      <div class="gallery" id="gallery"></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="wrap reveal">
+      <div class="big">Буду очень рад тебя видеть! 🎉</div>
+      <div class="sign">— Слава</div>
+      <div class="stage">
+        <img src="images/img_0545.jpg" alt="Салют">
+        <div class="cap">🎆 Салют в честь праздника — 5 декабря 2026</div>
+      </div>
+      <button class="back-btn" id="backBtn" type="button">← Вернуться к конверту</button>
+    </div>
+  </section>
+
+  <footer>Сделано с любовью для друзей и близких · Штыковские пруды</footer>
+</main>
+
+<!-- ======================= ЛАЙТБОКС ======================= -->
+<div id="lightbox">
+  <span class="close" id="lbClose">✕</span>
+  <img id="lbImg" src="" alt="">
+  <div class="cap" id="lbCap"></div>
+</div>
+
+<script>
+/* ---------- галерея: заголовки взяты со страниц-источников ---------- */
+const PHOTOS = [
+  ["img_0178.jpg","Пруды и мост"],
+  ["img_0433.jpg","Баня в лесу"],
+  ["img_0158.jpg","Большой пруд"],
+  ["img_0082.jpg","Катамараны на воде"],
+  ["img_0368.jpg","Прокат на пруду"],
+  ["img_0330.jpg","Баня у пруда"],
+  ["img_0502.jpeg","Каминный зал"],
+  ["img_0185.jpg","Парная"],
+  ["img_0019.jpg","Зимой в парке"],
+  ["img_0112.jpg","Зимние забавы"],
+  ["img_0051.jpg","Горнолыжный склон"],
+  ["img_0102.jpg","Снежные развлечения"],
+  ["img_0545.jpg","Салют и фейерверки"],
+  ["img_0009.jpg","Банкетный зал"],
+  ["img_0224.jpg","Беседки в лесу"],
+  ["img_0325.jpeg","Пикник в лесу"]
+];
+
+const gallery = document.getElementById('gallery');
+PHOTOS.forEach(([f, cap]) => {
+  const fig = document.createElement('figure');
+  fig.className = 'reveal';
+  fig.innerHTML = '<img loading="lazy" src="images/' + f + '" alt="' + cap + '"><figcaption>' + cap + '</figcaption>';
+  fig.addEventListener('click', () => openLightbox('images/' + f, cap));
+  gallery.appendChild(fig);
+});
+
+/* ---------- лайтбокс ---------- */
+const lb = document.getElementById('lightbox');
+function openLightbox(src, cap){
+  document.getElementById('lbImg').src = src;
+  document.getElementById('lbCap').textContent = cap;
+  lb.classList.add('show');
+}
+lb.addEventListener('click', (e) => { if(e.target === lb || e.target.id === 'lbClose') lb.classList.remove('show'); });
+document.addEventListener('keydown', (e) => { if(e.key === 'Escape') lb.classList.remove('show'); });
+
+/* ---------- фон-снег ---------- */
+(function(){
+  const amb = document.getElementById('ambient');
+  for(let i=0;i<26;i++){
+    const s = document.createElement('i');
+    const size = 2 + Math.random()*6;
+    s.style.width = s.style.height = size + 'px';
+    s.style.left = Math.random()*100 + 'vw';
+    s.style.animationDuration = (7 + Math.random()*11) + 's';
+    s.style.animationDelay = (-Math.random()*16) + 's';
+    s.style.opacity = 0.25 + Math.random()*0.5;
+    amb.appendChild(s);
+  }
+})();
+
+/* ---------- конфетти ---------- */
+const canvas = document.getElementById('fx');
+const ctx = canvas.getContext('2d');
+let W, H;
+function resize(){ W = canvas.width = innerWidth; H = canvas.height = innerHeight; }
+addEventListener('resize', resize); resize();
+
+const COLORS = ['#f4d03f','#e6b800','#ffffff','#ff6b6b','#4ecdc4','#a29bfe','#ff9f43'];
+let particles = [];
+function confetti(n){
+  for(let i=0;i<n;i++){
+    particles.push({
+      x: W/2 + (Math.random()-.5)*W*0.5,
+      y: H*0.34 + (Math.random()-.5)*120,
+      vx: (Math.random()-.5)*16,
+      vy: Math.random()*-15 - 3,
+      g: 0.3 + Math.random()*0.2,
+      s: 6 + Math.random()*9,
+      rot: Math.random()*6.28,
+      vr: (Math.random()-.5)*0.35,
+      c: COLORS[(Math.random()*COLORS.length)|0],
+      life: 1
+    });
+  }
+}
+(function loop(){
+  ctx.clearRect(0,0,W,H);
+  for(let i=particles.length-1;i>=0;i--){
+    const p = particles[i];
+    p.vy += p.g; p.x += p.vx; p.y += p.vy; p.vx *= 0.995; p.rot += p.vr; p.life -= 0.006;
+    if(p.life <= 0 || p.y > H + 60){ particles.splice(i,1); continue; }
+    ctx.save();
+    ctx.globalAlpha = Math.max(0, p.life);
+    ctx.translate(p.x, p.y); ctx.rotate(p.rot);
+    ctx.fillStyle = p.c;
+    ctx.fillRect(-p.s/2, -p.s/2, p.s, p.s*0.62);
+    ctx.restore();
+  }
+  requestAnimationFrame(loop);
+})();
+
+/* ---------- открытие/закрытие ---------- */
+const envelope = document.getElementById('envelope');
+const box = document.getElementById('envelopeBox');
+const invitation = document.getElementById('invitation');
+const openBtn = document.getElementById('openBtn');
+const backBtn = document.getElementById('backBtn');
+
+function openInvitation(){
+  if(envelope.classList.contains('opened')) return;
+  box.classList.add('open');
+  setTimeout(() => {
+    envelope.classList.add('opened');
+    invitation.classList.add('show');
+    invitation.style.display = 'block';
+    document.body.style.overflow = 'auto';
+    window.scrollTo(0,0);
+    confetti(220);
+    setTimeout(() => confetti(140), 500);
+    revealCheck();
+  }, 780);
+}
+function closeInvitation(){
+  invitation.classList.remove('show');
+  setTimeout(() => {
+    invitation.style.display = 'none';
+    box.classList.remove('open');
+    envelope.classList.remove('opened');
+    document.body.style.overflow = 'hidden';
+  }, 700);
+}
+document.body.style.overflow = 'hidden';
+
+envelope.addEventListener('click', openInvitation);
+openBtn.addEventListener('click', (e) => { e.stopPropagation(); openInvitation(); });
+backBtn.addEventListener('click', closeInvitation);
+envelope.addEventListener('keydown', (e) => {
+  if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openInvitation(); }
+});
+
+/* ---------- плавное появление при скролле ---------- */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(en => { if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+}, { threshold: 0.14 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+function revealCheck(){ document.querySelectorAll('.reveal').forEach(el => io.observe(el)); }
+
+/* ---------- параллакс hero ---------- */
+const heroBg = document.getElementById('heroBg');
+addEventListener('scroll', () => {
+  const y = window.scrollY;
+  if(y < innerHeight) heroBg.style.transform = 'translateY(' + (y * 0.28) + 'px) scale(1.04)';
+}, { passive:true });
+
+/* ---------- обратный отсчёт до 5 декабря 2026, 15:00 (UTC+10) ---------- */
+const target = new Date('2026-12-05T15:00:00+10:00').getTime();
+const pad = n => String(n).padStart(2,'0');
+function tick(){
+  let d = target - Date.now();
+  if(d < 0) d = 0;
+  document.getElementById('cd-d').textContent = Math.floor(d/86400000);
+  document.getElementById('cd-h').textContent = pad(Math.floor(d%86400000/3600000));
+  document.getElementById('cd-m').textContent = pad(Math.floor(d%3600000/60000));
+  document.getElementById('cd-s').textContent = pad(Math.floor(d%60000/1000));
+}
+tick(); setInterval(tick, 1000);
+</script>
 </body>
 </html>
