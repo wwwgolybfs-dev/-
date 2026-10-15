@@ -4,15 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Приглашение на день рождения · Слава</title>
-<meta name="description" content="Слава зовёт на день рождения: 5 декабря 2026, Штыковские пруды. Баня, шашлык и компания, где все будут готовы раньше шашлыка.">
+<meta name="description" content="Слава зовёт на днюху: 5 декабря 2026, Штыковские пруды. Баня, шашлык и компания, которая нажрётся раньше, чем дожарится мясо.">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Слава зовёт на день рождения 🎉">
-<meta property="og:description" content="5 декабря 2026 · Штыковские пруды · баня, шашлык и компания, которая готова раньше, чем замаринуется мясо.">
+<meta property="og:title" content="Слава зовёт на днюху 🎉">
+<meta property="og:description" content="5 декабря 2026 · Штыковские пруды · баня, шашлык и бухло покрепче компота.">
 <meta property="og:url" content="https://wwwgolybfs-dev.github.io/-/html2.html">
 <meta property="og:image" content="https://wwwgolybfs-dev.github.io/-/images/og-preview.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Слава зовёт на день рождения 🎉">
+<meta name="twitter:title" content="Слава зовёт на днюху 🎉">
 <meta name="twitter:image" content="https://wwwgolybfs-dev.github.io/-/images/og-preview.jpg">
 
 <link rel="icon" href="favicon.ico" sizes="any">
@@ -87,7 +87,7 @@ h1,h2,h3,.display{ font-family:'Syne',sans-serif; }
 .kicker{ font-size:13px; letter-spacing:7px; text-transform:uppercase; color:var(--muted); font-weight:600; opacity:0; animation:up .9s .4s cubic-bezier(.2,.7,.3,1) forwards; }
 #envelope h1{
   font-family:'Syne',sans-serif; font-weight:800;
-  font-size:clamp(40px,9vw,88px); line-height:1; margin:18px 0 12px;
+  font-size:clamp(44px,10vw,100px); line-height:1; margin:18px 0 12px;
   background:linear-gradient(120deg,#fff 0%,var(--green) 45%,var(--purple) 100%);
   -webkit-background-clip:text; background-clip:text; color:transparent;
   opacity:0; animation:up .9s .55s cubic-bezier(.2,.7,.3,1) forwards;
@@ -132,8 +132,8 @@ h1,h2,h3,.display{ font-family:'Syne',sans-serif; }
   transform:translateY(26%); transition:transform .75s .18s cubic-bezier(.2,.7,.3,1);
   box-shadow:0 12px 30px rgba(0,0,0,.4);
 }
-.letter .lt{ font-family:'Syne',sans-serif; font-weight:700; font-size:clamp(18px,3.4vw,26px); color:#0d0d12; }
-.letter .ld{ font-size:13px; color:#5b5b66; margin-top:6px; letter-spacing:.5px; }
+.letter .lt{ font-family:'Syne',sans-serif; font-weight:700; font-size:clamp(17px,3.2vw,24px); color:#0d0d12; padding:0 12px; }
+.letter .ld{ font-size:12px; color:#5b5b66; margin-top:6px; letter-spacing:.5px; }
 .envelope.open .letter{ transform:translateY(-22%); }
 
 .env-face{
@@ -198,7 +198,6 @@ section{ padding:96px 20px; position:relative; }
 .scroll-hint{ position:absolute; bottom:26px; left:50%; transform:translateX(-50%); font-size:22px; color:var(--green); opacity:.6; animation:bob 2s infinite; }
 @keyframes bob{ 0%,100%{transform:translate(-50%,0);} 50%{transform:translate(-50%,10px);} }
 
-/* reveal + stagger */
 .reveal{ opacity:0; transform:translateY(40px); transition:opacity .9s cubic-bezier(.2,.7,.3,1), transform .9s cubic-bezier(.2,.7,.3,1); }
 .reveal.in{ opacity:1; transform:none; }
 .stagger > *{ transition-delay:calc(var(--i,0) * 90ms); }
@@ -281,7 +280,7 @@ footer{ text-align:center; padding:40px 20px 60px; font-size:13px; color:var(--m
 
 <div id="preloader">
   <div class="pb">СЛАВА</div>
-  <div class="ps">день рождения · 5 декабря</div>
+  <div class="ps">днюха · 5 декабря · будет жёстко</div>
   <div class="bar"><i></i></div>
 </div>
 
@@ -292,20 +291,20 @@ footer{ text-align:center; padding:40px 20px 60px; font-size:13px; color:var(--m
 <!-- ======================= КОНВЕРТ ======================= -->
 <div id="envelope" role="button" tabindex="0" aria-label="Открыть приглашение">
   <div class="env-inner">
-    <div class="kicker">Слава приглашает · 5 декабря 2026</div>
-    <h1>День рождения</h1>
-    <div class="sub">Тебе пришло персональное приглашение. Не отмазывайся — открывай 🎄</div>
+    <div class="kicker">Слава зовёт · будет жарко · 5 декабря</div>
+    <h1>Днюха!</h1>
+    <div class="sub">Тебе пришло приглашение. Не еби мозг — открывай, шашлык стынет 🍢</div>
 
     <div class="env-wrap">
       <div class="envelope" id="envelopeBox">
-        <div class="letter"><div><div class="lt">Тебе, дорогой друг</div><div class="ld">5 декабря · Штыковские пруды</div></div></div>
+        <div class="letter"><div><div class="lt">Тебе, ебать, дорогому другу</div><div class="ld">5 декабря · Штыковские пруды · 15:00</div></div></div>
         <div class="env-body"></div>
         <div class="flap"></div>
-        <div class="env-face"><div class="t">Приглашение</div><div class="s">от Славы</div></div>
+        <div class="env-face"><div class="t">Приглашение</div><div class="s">от Славы (да, того самого)</div></div>
       </div>
     </div>
 
-    <div class="hint">нажми на <b>конверт</b> — перелистнём ✨</div>
+    <div class="hint">жми на <b>конверт</b>, не тупи, бля ✨</div>
     <button class="btn" id="openBtn" type="button">Открыть</button>
   </div>
 </div>
@@ -316,10 +315,10 @@ footer{ text-align:center; padding:40px 20px 60px; font-size:13px; color:var(--m
   <section class="hero">
     <div class="hero-bg" id="heroBg"></div>
     <div class="kicker">Арт-парк «Штыковские пруды»</div>
-    <h2>У меня день рождения!</h2>
-    <div class="name">Слава зовёт 🎉</div>
-    <p class="lead">Баня, пруд, шашлык и компания, где все будут готовы раньше, чем шашлык. Кто не придёт — сам себя наказал.</p>
-    <div class="pill">🗓️ Родился 1 декабря, отмечаем 5-го — нужен разогрев.<br>📍 Штыковские пруды, Приморский край, район Артём</div>
+    <h2>Днюха, ебать!</h2>
+    <div class="name">Слава зовёт — отмазки не канают 🍻</div>
+    <p class="lead">Баня, пруд, шашлык и компания, которая нажрётся раньше, чем мясо дожарится. Кто не приедет — тот еблан, потом не жалуйся.</p>
+    <div class="pill">🗓️ Родился 1 декабря, бухаем 5-го — печень уже в предвкушении.<br>📍 Штыковские пруды, Приморский край, район Артём</div>
 
     <div class="count" id="countdown">
       <div class="cell"><div class="n" id="cd-d">–</div><div class="l">дней</div></div>
@@ -332,12 +331,12 @@ footer{ text-align:center; padding:40px 20px 60px; font-size:13px; color:var(--m
 
   <section>
     <div class="wrap">
-      <h2 class="sec-title reveal">Что, где, когда и как</h2>
-      <p class="sec-sub reveal">Коротко и без воды. Ну, кроме пруда.</p>
+      <h2 class="sec-title reveal">Чё, куда, во сколько и нахуя</h2>
+      <p class="sec-sub reveal">Читай и не задавай тупых вопросов.</p>
       <div class="grid stagger">
         <div class="box reveal" style="--i:0" data-tilt>
           <div class="ico">🍢</div><h3>Что</h3>
-          <p>Баня, пруд, шашлык и напитки посерьёзнее компота. Кто не пьёт — назначается ответственным за мангал и красивые сторис.</p>
+          <p>Баня, пруд, шашлык и бухло покрепче компота. Кто не пьёт — назначается мангальщиком и оператором сторис.</p>
         </div>
         <div class="box reveal" style="--i:1" data-tilt>
           <div class="ico">📍</div><h3>Где</h3>
@@ -345,11 +344,11 @@ footer{ text-align:center; padding:40px 20px 60px; font-size:13px; color:var(--m
         </div>
         <div class="box reveal" style="--i:2" data-tilt>
           <div class="ico">🕒</div><h3>Когда</h3>
-          <p><b>5 декабря 2026</b>, с 15:00 до 18:00.<br>По факту — пока не разойдёмся.</p>
+          <p><b>5 декабря 2026</b>, с 15:00 до 18:00.<br>По факту — пока не вынесешь меня на руках.</p>
         </div>
         <div class="box reveal" style="--i:3" data-tilt>
           <div class="ico">🧖</div><h3>Как</h3>
-          <p>Приходи к 15:00. <b>Купальник — по желанию, тосты — строго обязательны.</b></p>
+          <p>Приходи к 15:00. <b>Купальник — по желанию, тосты — обязанность.</b> Кто приедет трезвым — тем хуже для него.</p>
         </div>
       </div>
     </div>
@@ -357,21 +356,21 @@ footer{ text-align:center; padding:40px 20px 60px; font-size:13px; color:var(--m
 
   <section style="background:linear-gradient(180deg,var(--bg),#0a0a12,var(--bg))">
     <div class="wrap">
-      <h2 class="sec-title reveal">Где мы это устроим 📸</h2>
-      <p class="sec-sub reveal">Локация — пушка. Листай, нажимай и завидуй сам себе, что ты в списке гостей.</p>
+      <h2 class="sec-title reveal">Локация, где всё и произойдёт 📸</h2>
+      <p class="sec-sub reveal">Смотри, куда тебя занесёт. Нажимай и завидуй сам себе.</p>
       <div class="gallery" id="gallery"></div>
     </div>
   </section>
 
   <section id="road">
     <div class="wrap">
-      <h2 class="sec-title reveal">Как добраться 🚕</h2>
-      <p class="sec-sub reveal">Дорогу беру на себя — ты отвечаешь только за настроение.</p>
+      <h2 class="sec-title reveal">Как доехать, блять 🚕</h2>
+      <p class="sec-sub reveal">Дорогу беру на себя — от тебя только присутствие и печень.</p>
       <div class="road">
         <div class="road-col">
           <div class="box reveal" data-tilt>
             <div class="ico">🚕</div><h3>Такси</h3>
-            <p>Я закажу <b>такси</b> и заберу всех <b>по пути</b>. Конечная — «Штыковские пруды». Обратно тоже развезу — даже тех, кто переоценил свои силы 😄</p>
+            <p>Закажу тачку и соберу всех по пути, как маршрутку. Обратно тоже развезу — даже тех, кто отрубится.</p>
           </div>
           <div class="box reveal" data-tilt>
             <div class="ico">📍</div><h3>Куда едем</h3>
@@ -391,17 +390,17 @@ footer{ text-align:center; padding:40px 20px 60px; font-size:13px; color:var(--m
 
   <section class="cta">
     <div class="wrap reveal">
-      <div class="big">Жду! Кто не придёт — будет слушать, как было круто, от других 😄</div>
-      <div class="sign">— Слава</div>
+      <div class="big">Всё, хули думать? Приезжай. Кто не приедет — будет жалеть всю неделю.</div>
+      <div class="sign">— Слава (именинник и виновник торжества)</div>
       <div class="stage">
         <img src="images/img_0545.webp" alt="Салют" loading="lazy">
-        <div class="cap">🎆 Салют, какого достойна эта компания — 5 декабря 2026</div>
+        <div class="cap">🎆 Салют — какого вы заслужили, ебать. Люблю вас 😄</div>
       </div>
       <button class="back-btn" id="backBtn" type="button">← Вернуться к конверту</button>
     </div>
   </section>
 
-  <footer>Шутки ради, а праздник — настоящий · Штыковские пруды</footer>
+  <footer>Без обид, всё по любви. Если что — Слава ни при чём 😄 · Штыковские пруды</footer>
 </main>
 
 <div id="lightbox">
@@ -509,12 +508,10 @@ function confetti(n){
   requestAnimationFrame(loop);
 })();
 
-/* ---------- прелоадер ---------- */
 addEventListener('load', () => {
   setTimeout(() => document.getElementById('preloader').classList.add('done'), 1200);
 });
 
-/* ---------- конверт: открытие с перелистыванием ---------- */
 const envelope = document.getElementById('envelope');
 const box = document.getElementById('envelopeBox');
 const invitation = document.getElementById('invitation');
@@ -523,9 +520,9 @@ const backBtn = document.getElementById('backBtn');
 
 function openInvitation(){
   if(envelope.classList.contains('turning')) return;
-  box.classList.add('open');                     // клапан + письмо
+  box.classList.add('open');
   setTimeout(() => {
-    envelope.classList.add('turning');           // перелистывание (3D page-turn)
+    envelope.classList.add('turning');
     invitation.classList.add('show');
     invitation.style.display = 'block';
     document.body.style.overflow = 'auto';
