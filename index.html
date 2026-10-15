@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Приглашение на день рождения</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600;700&display=swap');
 
         :root {
             --gold: #f4d03f;
-            --dark: #1a1a1a;
+            --dark: #0d0d0d;
         }
 
         * {
@@ -20,16 +20,17 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #0f0f0f, #2c2c2c);
+            background: linear-gradient(135deg, #0a0a0a, #1f1f1f);
             color: #fff;
             overflow: hidden;
+            height: 100vh;
         }
 
-        /* КОНВЕРТ / ПРЯМОУГОЛЬНИК */
+        /* ==================== КОНВЕРТ + ЭКРАН ОТКРЫТИЯ ==================== */
         #envelope {
             width: 100vw;
             height: 100vh;
-            background: #2a2a2a;
+            background: #2c2c2c;
             position: fixed;
             top: 0;
             left: 0;
@@ -38,114 +39,118 @@
             justify-content: center;
             z-index: 100;
             cursor: pointer;
-            transition: all 1.2s cubic-bezier(0.25, 0.1, 0.25, 1);
-        }
-
-        #envelope:hover {
-            transform: scale(1.05);
+            transition: transform 1.6s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
 
         .envelope-content {
             background: linear-gradient(180deg, #3a2f1f, #2a2118);
-            width: 520px;
-            height: 340px;
-            border-radius: 12px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8),
-                        inset 0 0 80px rgba(255, 200, 50, 0.2);
+            width: 560px;
+            height: 380px;
+            border-radius: 18px;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.9),
+                        inset 0 0 120px rgba(255, 200, 50, 0.25);
             position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             overflow: hidden;
         }
 
-        /* Металлическая поверхность конверта */
         .envelope-content::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
+            inset: 0;
             background: linear-gradient(45deg, 
-                rgba(255,255,255,0.08) 0%,
+                rgba(255,255,255,0.12) 0%,
                 transparent 50%,
-                rgba(0,0,0,0.4) 100%);
-            pointer-events: none;
-            animation: shine 4s linear infinite;
+                rgba(0,0,0,0.35) 100%);
+            animation: shine 5s linear infinite;
         }
 
         @keyframes shine {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 200% 50%; }
+            0% { transform: translateX(-30%); }
+            100% { transform: translateX(30%); }
         }
 
-        .envelope-inner {
-            text-align: center;
-            padding: 40px 30px;
-            color: #f4d03f;
+        .seals {
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 18px;
+            z-index: 3;
         }
 
         .seal {
-            position: absolute;
-            top: 80px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 110px;
-            height: 110px;
+            width: 68px;
+            height: 68px;
             background: #c8102e;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #fff;
-            font-size: 18px;
-            font-weight: 700;
+            font-size: 9px;
+            font-weight: 800;
             text-align: center;
-            box-shadow: 0 0 0 18px rgba(200, 16, 46, 0.3),
-                        0 15px 30px rgba(0, 0, 0, 0.6);
-            letter-spacing: 1px;
-            z-index: 2;
+            line-height: 1.1;
+            box-shadow: 0 0 0 14px rgba(200, 16, 46, 0.4);
+            transform: rotate(-4deg);
         }
 
         .seal::after {
             content: "С ЮР. ДНЁМ!";
-            font-size: 13px;
-            opacity: 0.9;
-            transform: rotate(-8deg);
+            font-size: 11px;
         }
 
         .title {
             font-family: 'Playfair Display', serif;
-            font-size: 32px;
-            margin-bottom: 12px;
-            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+            font-size: 34px;
+            margin-top: 70px;
+            color: #f4d03f;
+            text-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
         }
 
         .subtitle {
-            font-size: 15px;
+            font-size: 17px;
             opacity: 0.85;
-            letter-spacing: 3px;
-            margin-bottom: 30px;
+            letter-spacing: 4px;
+            margin: 10px 0 30px;
         }
 
         .btn {
             background: #1a1a1a;
             color: #f4d03f;
             border: 3px solid #f4d03f;
-            padding: 14px 40px;
-            font-size: 17px;
-            font-weight: 600;
-            letter-spacing: 2px;
+            padding: 16px 48px;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 3px;
             cursor: pointer;
             transition: all 0.3s;
             text-transform: uppercase;
-            box-shadow: 0 8px 0 #000;
+            box-shadow: 0 10px 0 #000;
         }
 
         .btn:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 0 #000;
+            transform: translateY(-6px);
+            box-shadow: 0 16px 0 #000;
         }
 
-        /* ОСНОВНАЯ ЧАСТЬ ПРИГЛАШЕНИЯ (скрыта по умолчанию) */
+        .open-text {
+            position: absolute;
+            bottom: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 19px;
+            color: #f4d03f;
+            opacity: 0.6;
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 1; }
+        }
+
+        /* ==================== ОСНОВНАЯ ЧАСТЬ ПРИГЛАШЕНИЯ ==================== */
         #invitation {
             display: none;
             position: fixed;
@@ -153,7 +158,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            background: linear-gradient(135deg, #0a0a0a, #1f1f1f);
             z-index: 50;
             overflow: hidden;
             align-items: center;
@@ -161,126 +166,124 @@
         }
 
         .card {
-            width: 620px;
-            background: linear-gradient(180deg, #1f1f1f, #0a0a0a);
+            width: 680px;
+            background: rgba(15, 15, 15, 0.95);
             border-radius: 24px;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9),
-                        inset 0 0 100px rgba(244, 208, 63, 0.15);
-            padding: 50px 40px;
+            box-shadow: 0 50px 100px rgba(0, 0, 0, 0.95),
+                        inset 0 0 120px rgba(244, 208, 63, 0.18);
+            padding: 55px 45px;
             position: relative;
             color: #fff;
             text-align: center;
-            animation: fadeIn 1.2s forwards;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.85); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        /* Фоновая картинка пруда (добавь свои фото сюда) */
-        .background-image {
+        .background {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://picsum.photos/id/1015/1920/1080') center/cover no-repeat;
-            opacity: 0.25;
-            filter: brightness(0.85) contrast(1.1);
+            inset: 0;
+            background: url('https://shtprudy.ru/wp-content/uploads/2024/09/shtykovskie-prudy-proud.jpg') center/cover no-repeat;
+            opacity: 0.28;
+            filter: brightness(0.82) contrast(1.15);
             z-index: -1;
         }
 
-        /* Штамп "Штыковские пруды, Артём" */
         .location-stamp {
             position: absolute;
-            top: 30px;
+            top: 35px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(244, 208, 63, 0.95);
+            background: rgba(244, 208, 63, 0.98);
             color: #1a1a1a;
-            padding: 8px 28px;
-            font-size: 13px;
+            padding: 10px 38px;
+            font-size: 15px;
             font-weight: 700;
-            letter-spacing: 2px;
-            border-radius: 30px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-            white-space: nowrap;
+            letter-spacing: 2.5px;
+            border-radius: 40px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
             z-index: 10;
+            white-space: nowrap;
         }
 
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 48px;
+            font-size: 52px;
             color: #f4d03f;
-            text-shadow: 0 0 20px rgba(244, 208, 63, 0.6);
-            margin-bottom: 12px;
+            text-shadow: 0 0 25px rgba(244, 208, 63, 0.7);
+            margin-bottom: 8px;
         }
 
         .subtitle-small {
-            font-size: 18px;
-            margin-bottom: 30px;
-            opacity: 0.9;
+            font-size: 21px;
+            margin-bottom: 35px;
+            opacity: 0.92;
         }
 
         .info {
-            font-size: 20px;
-            margin: 20px 0;
-            line-height: 1.6;
+            font-size: 21px;
+            line-height: 1.7;
+            margin: 25px 0 40px;
+            max-width: 520px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .info strong {
             color: #f4d03f;
+            font-size: 24px;
         }
 
         .time {
-            font-size: 26px;
-            font-weight: 600;
+            font-size: 29px;
+            font-weight: 700;
             color: #f4d03f;
-            margin: 25px 0;
+            margin: 30px 0 45px;
         }
 
         .photo-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
+            gap: 22px;
             margin: 40px 0;
         }
 
         .photo-item {
-            border-radius: 16px;
+            border-radius: 18px;
             overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+            transition: transform 0.4s;
+        }
+
+        .photo-item:hover {
+            transform: scale(1.06);
         }
 
         .photo-item img {
             width: 100%;
-            height: 180px;
+            height: 190px;
             object-fit: cover;
         }
 
         .thank-you {
-            font-size: 22px;
-            margin-top: 30px;
+            font-size: 24px;
             color: #f4d03f;
-            animation: pulse 2s infinite;
+            margin-top: 30px;
+            animation: pulse 2.2s infinite;
         }
 
         @keyframes pulse {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+            50% { transform: scale(1.06); }
         }
 
         .back-btn {
             position: absolute;
-            bottom: 30px;
+            bottom: 35px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.12);
             color: #fff;
             border: none;
-            padding: 12px 24px;
-            font-size: 14px;
+            padding: 13px 30px;
+            font-size: 15px;
             cursor: pointer;
             transition: all 0.3s;
         }
@@ -289,77 +292,62 @@
             background: #f4d03f;
             color: #1a1a1a;
         }
-
-        /* Анимированный текст "Открыть конверт" */
-        .open-text {
-            position: absolute;
-            bottom: 80px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 18px;
-            opacity: 0.7;
-            animation: blink 2s infinite;
-        }
     </style>
 </head>
 <body>
 
-    <!-- КОНВЕРТ -->
+    <!-- ==================== КОНВЕРТ + ЭКРАН ОТКРЫТИЯ ==================== -->
     <div id="envelope">
         <div class="envelope-content">
-            <div class="envelope-inner">
-                <div class="seal">🎂 С ЮР. ДНЁМ! 🎂</div>
-                <div class="title">Приглашение</div>
-                <div class="subtitle">на день рождения</div>
-                <button class="btn" id="open-btn">Открыть конверт</button>
+            <!-- Печать "С ЮР. ДНЁМ!" -->
+            <div class="seals">
+                <div class="seal">🎂</div>
+                <div class="seal">🎂</div>
             </div>
+
+            <div class="title">Приглашение</div>
+            <div class="subtitle">на день рождения</div>
+
+            <button class="btn" id="open-btn">Открыть конверт ✉️</button>
+
+            <div class="open-text">КЛИКНИТЕ ИЛИ НАЖМИТЕ</div>
         </div>
     </div>
 
-    <!-- ОСНОВНАЯ ЧАСТЬ ПРИГЛАШЕНИЯ -->
+    <!-- ==================== ОСНОВНАЯ ЧАСТЬ ПРИГЛАШЕНИЯ ==================== -->
     <div id="invitation">
         <div class="card">
-            
-            <!-- Фоновая картинка пруда -->
-            <div class="background-image"></div>
-            
+            <!-- Фон с реальной локации с сайта shtprudy.ru (пруд) -->
+            <div class="background"></div>
+
             <!-- Штамп локации -->
-            <div class="location-stamp">📍 Штыковские пруды, Артём</div>
+            <div class="location-stamp">📍 Штыковские пруды • Артём</div>
 
             <h1>С ЮР. ДНЁМ, КУЗЬМА! 🎉</h1>
-            
             <div class="subtitle-small">5 декабря 2026</div>
-            
+
             <div class="info">
-                15:00 — 18:00<br>
-                Штыковские пруды, Приморский край, район Артём
+                <strong>15:00 — 18:00</strong><br>
+                Штыковские пруды, Приморский край, район Артём<br><br>
+                Приходи — поставим баню в лесу, скинем воду в пруд для ныряния и устроим настоящий отдых!
             </div>
-
-            <div class="photo-grid">
-                <!-- Фото пруда и леса (замени ссылки на свои фото) -->
-                <div class="photo-item"><img src="https://picsum.photos/id/1015/400/280" alt="Пруд"></div>
-                <div class="photo-item"><img src="https://picsum.photos/id/201/400/280" alt="Лес"></div>
-                <div class="photo-item"><img src="https://picsum.photos/id/251/400/280" alt="Баня"></div>
-                <div class="photo-item"><img src="https://picsum.photos/id/29/400/280" alt="Баня в лесу"></div>
-            </div>
-
-            <p style="font-size:17px; max-width:500px; margin:0 auto 40px;">
-                Приходи, поможем поставить баню, скинем воду в пруд для ныряния и устроим настоящий отдых в лесу!
-            </p>
 
             <div class="time">
                 Время: <strong>15:00</strong><br>
                 Примерно 3 часа
             </div>
 
-            <p style="font-size:16px; margin-bottom:40px; opacity:0.85;">
-                Ждём тебя в Штыковских прудах!
-            </p>
+            <!-- Фото с сайта базы отдыха (замени на свои, если хочешь) -->
+            <div class="photo-grid">
+                <div class="photo-item"><img src="https://shtprudy.ru/wp-content/uploads/2024/09/shtykovskie-prudy-proud.jpg" alt="Пруд"></div>
+                <div class="photo-item"><img src="https://shtprudy.ru/wp-content/uploads/2024/10/shtykovskie-prudy-park.jpg" alt="Парк"></div>
+                <div class="photo-item"><img src="https://shtprudy.ru/wp-content/uploads/2024/09/shtykovskie-prudy-forest.jpg" alt="Лес"></div>
+                <div class="photo-item"><img src="https://shtprudy.ru/wp-content/uploads/2024/10/shtykovskie-prudy-banquet.jpg" alt="Банкет"></div>
+            </div>
 
             <button class="btn" onclick="location.reload()">Открыть ещё раз</button>
-            
             <button class="back-btn" onclick="backToEnvelope()">Назад в конверт</button>
-            
+
             <div class="thank-you">СЮР. ДНЁМ, КУЗЬМА! 🎂</div>
         </div>
     </div>
@@ -370,33 +358,32 @@
         const openBtn = document.getElementById('open-btn');
 
         openBtn.addEventListener('click', () => {
-            envelope.style.transition = 'all 1.4s cubic-bezier(0.25, 0.1, 0.25, 1)';
-            envelope.style.transform = 'translateY(-300px) scale(0.6)';
-            envelope.style.opacity = '0';
+            // Анимация конверта (как в гиперпространстве)
+            envelope.style.transition = 'transform 1.8s cubic-bezier(0.25, 0.1, 0.25, 1)';
+            envelope.style.transform = 'translateY(-380px) scale(0.4) rotate(12deg)';
 
             setTimeout(() => {
                 envelope.style.display = 'none';
                 invitation.style.display = 'flex';
-            }, 1400);
+            }, 1800);
         });
 
         function backToEnvelope() {
-            invitation.style.transition = 'all 1.2s';
+            invitation.style.transition = 'all 1.3s';
             invitation.style.opacity = '0';
-            invitation.style.transform = 'scale(0.8)';
+            invitation.style.transform = 'scale(0.7)';
 
             setTimeout(() => {
                 invitation.style.display = 'none';
                 envelope.style.display = 'flex';
-                envelope.style.transition = 'all 1.2s';
-                envelope.style.transform = 'translateY(0) scale(1)';
-                envelope.style.opacity = '1';
-            }, 1200);
+                envelope.style.transition = 'all 1.3s';
+                envelope.style.transform = 'translateY(0) scale(1) rotate(0deg)';
+            }, 1300);
         }
 
-        // Добавляем лёгкую анимацию для фото
+        // Лёгкая анимация фото
         document.querySelectorAll('.photo-item').forEach((el, i) => {
-            el.style.animation = `photoPop 0.6s ${i * 80}ms forwards`;
+            el.style.animation = `photoPop ${0.6 + i * 0.1}s ${i * 60}ms forwards`;
         });
     </script>
 </body>
