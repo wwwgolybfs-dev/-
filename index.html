@@ -4,21 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Приглашение на день рождения · Слава</title>
-<meta name="description" content="Слава приглашает на день рождения: 5 декабря 2026, Арт-парк «Штыковские пруды». Баня в лесу, зимние забавы и тёплая компания.">
+<meta name="description" content="Слава зовёт на день рождения: 5 декабря 2026, Штыковские пруды. Баня, шашлык и компания, где все будут готовы раньше шашлыка.">
 
 <!-- ===== Open Graph / соцсети ===== -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Приглашение на день рождения">
-<meta property="og:title" content="Слава приглашает на день рождения 🎉">
-<meta property="og:description" content="5 декабря 2026 · Штыковские пруды · баня в лесу и зимние забавы. День рождения — 1 декабря, отмечаем 5-го.">
+<meta property="og:title" content="Слава зовёт на день рождения 🎉">
+<meta property="og:description" content="5 декабря 2026 · Штыковские пруды · баня, шашлык и компания, которая готова раньше, чем замаринуется мясо.">
 <meta property="og:url" content="https://wwwgolybfs-dev.github.io/-/">
 <meta property="og:image" content="https://wwwgolybfs-dev.github.io/-/images/og-preview.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="ru_RU">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Слава приглашает на день рождения 🎉">
-<meta name="twitter:description" content="5 декабря 2026 · Штыковские пруды · баня в лесу и зимние забавы.">
+<meta name="twitter:title" content="Слава зовёт на день рождения 🎉">
+<meta name="twitter:description" content="5 декабря 2026 · Штыковские пруды · баня, шашлык и тосты до победного.">
 <meta name="twitter:image" content="https://wwwgolybfs-dev.github.io/-/images/og-preview.jpg">
 
 <!-- ===== favicon ===== -->
@@ -41,17 +41,14 @@ body{
   -webkit-font-smoothing:antialiased;
 }
 
-/* ===== прогресс прокрутки ===== */
 #progress{
   position:fixed; top:0; left:0; height:3px; width:0; z-index:9800;
   background:linear-gradient(90deg,var(--gold),#ff6b6b,var(--gold));
   box-shadow:0 0 12px rgba(244,208,63,.7); transition:width .1s linear;
 }
 
-/* ===== конфетти ===== */
 #fx{ position:fixed; inset:0; pointer-events:none; z-index:9000; }
 
-/* ===== снег/боке ===== */
 .ambient{ position:fixed; inset:0; pointer-events:none; z-index:1; overflow:hidden; }
 .ambient i{
   position:absolute; top:-10vh; border-radius:50%;
@@ -147,7 +144,6 @@ body{
 section{ padding:90px 20px; }
 .wrap{ max-width:1080px; margin:0 auto; }
 
-/* hero */
 .hero{
   position:relative; min-height:100vh; display:flex; flex-direction:column;
   align-items:center; justify-content:center; text-align:center; overflow:hidden;
@@ -155,7 +151,7 @@ section{ padding:90px 20px; }
 }
 .hero-bg{
   position:absolute; inset:-8% 0; z-index:-2;
-  background:url('images/img_0178.webp') center/cover no-repeat;
+  background:url('images/img_0422.webp') center/cover no-repeat;
   will-change:transform;
 }
 .hero::after{
@@ -165,12 +161,12 @@ section{ padding:90px 20px; }
 .hero .kicker{ font-size:13px; letter-spacing:7px; text-transform:uppercase; color:var(--gold); }
 .hero h2{
   font-family:'Playfair Display',serif; font-weight:900;
-  font-size:clamp(44px,10vw,96px); line-height:1; margin:14px 0 6px;
+  font-size:clamp(42px,9vw,88px); line-height:1.02; margin:14px 0 6px;
   background:linear-gradient(120deg,#fff,var(--gold) 55%,#fff);
   -webkit-background-clip:text; background-clip:text; color:transparent;
 }
 .hero .name{ font-family:'Playfair Display',serif; font-size:clamp(26px,5vw,44px); color:var(--gold); }
-.hero .lead{ max-width:640px; font-size:17px; line-height:1.75; opacity:.9; margin:22px auto 0; }
+.hero .lead{ max-width:660px; font-size:17px; line-height:1.75; opacity:.9; margin:22px auto 0; }
 
 .pill{
   display:inline-block; margin-top:26px; padding:10px 26px; border-radius:60px;
@@ -191,7 +187,6 @@ section{ padding:90px 20px; }
 .scroll-hint{ position:absolute; bottom:26px; left:50%; transform:translateX(-50%); font-size:22px; color:var(--gold); opacity:.6; animation:bob 2s infinite; }
 @keyframes bob{ 0%,100%{transform:translate(-50%,0);} 50%{transform:translate(-50%,10px);} }
 
-/* reveal */
 .reveal{ opacity:0; transform:translateY(38px); transition:opacity .9s cubic-bezier(.2,.7,.3,1), transform .9s cubic-bezier(.2,.7,.3,1); }
 .reveal.in{ opacity:1; transform:none; }
 
@@ -201,7 +196,6 @@ section{ padding:90px 20px; }
 }
 .sec-sub{ text-align:center; opacity:.75; max-width:640px; margin:0 auto 46px; line-height:1.7; }
 
-/* карточки */
 .grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
 .box{
   background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.02));
@@ -215,10 +209,8 @@ section{ padding:90px 20px; }
 .box p{ font-size:16px; line-height:1.7; opacity:.93; }
 .box p b{ color:#fff; font-size:17px; }
 
-/* 3D-tilt */
 [data-tilt]{ transform-style:preserve-3d; will-change:transform; transition:transform .3s ease; }
 
-/* masonry-галерея */
 .gallery{ columns:3 240px; column-gap:14px; }
 .gallery figure{
   position:relative; break-inside:avoid; margin:0 0 14px; width:100%;
@@ -235,7 +227,6 @@ section{ padding:90px 20px; }
 }
 .gallery figure:hover figcaption, .gallery figure:focus figcaption{ transform:none; opacity:1; }
 
-/* лайтбокс */
 #lightbox{
   position:fixed; inset:0; z-index:9500; display:none; align-items:center; justify-content:center;
   background:rgba(4,4,6,.95); backdrop-filter:blur(8px); padding:24px;
@@ -250,38 +241,27 @@ section{ padding:90px 20px; }
 #lightbox .cap{ position:absolute; bottom:26px; left:50%; transform:translateX(-50%); font-size:15px; color:var(--gold); letter-spacing:1px; text-align:center; }
 #lightbox .count{ position:absolute; top:22px; left:50%; transform:translateX(-50%); font-size:13px; opacity:.6; }
 #lightbox .close{ position:absolute; top:16px; right:22px; font-size:34px; color:#fff; cursor:pointer; opacity:.8; }
-#lightbox .nav{
-  position:absolute; top:50%; transform:translateY(-50%); font-size:40px; color:#fff;
-  cursor:pointer; opacity:.5; user-select:none; padding:10px 18px; transition:.25s;
-}
+#lightbox .nav{ position:absolute; top:50%; transform:translateY(-50%); font-size:40px; color:#fff; cursor:pointer; opacity:.5; user-select:none; padding:10px 18px; transition:.25s; }
 #lightbox .nav:hover{ opacity:1; color:var(--gold); }
 #lightbox .prev{ left:10px; } #lightbox .next{ right:10px; }
 
-/* дорога / карта */
 .road{ display:grid; grid-template-columns:1fr 1fr; gap:20px; align-items:stretch; }
 .road-col{ display:grid; gap:20px; }
 .links{ margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; }
-.links a{
-  font-size:14px; color:var(--gold); text-decoration:none;
-  border:1px solid rgba(244,208,63,.5); border-radius:40px; padding:8px 16px; transition:.3s;
-}
+.links a{ font-size:14px; color:var(--gold); text-decoration:none; border:1px solid rgba(244,208,63,.5); border-radius:40px; padding:8px 16px; transition:.3s; }
 .links a:hover{ background:var(--gold); color:#141414; }
 .map-frame{ border-radius:20px; overflow:hidden; border:1px solid rgba(255,255,255,.12); min-height:280px; box-shadow:0 20px 50px rgba(0,0,0,.5); }
 .map-frame iframe{ width:100%; height:100%; min-height:280px; border:0; display:block; filter:saturate(.85) contrast(1.05); }
 
-/* cta */
 .cta{ text-align:center; }
-.cta .big{ font-family:'Playfair Display',serif; font-size:clamp(28px,6vw,54px); color:var(--gold); text-shadow:0 0 40px rgba(244,208,63,.5); }
+.cta .big{ font-family:'Playfair Display',serif; font-size:clamp(28px,6vw,52px); color:var(--gold); text-shadow:0 0 40px rgba(244,208,63,.5); }
 .cta .sign{ font-family:'Playfair Display',serif; font-size:26px; margin-top:10px; opacity:.9; }
 .cta .stage{
   margin-top:40px; border-radius:24px; overflow:hidden; position:relative;
   max-width:860px; margin-left:auto; margin-right:auto; box-shadow:0 30px 70px rgba(0,0,0,.6);
 }
 .cta .stage img{ width:100%; display:block; }
-.cta .stage .cap{
-  position:absolute; inset:auto 0 0 0; padding:30px 20px 16px; font-size:14px; letter-spacing:1px;
-  background:linear-gradient(transparent,rgba(0,0,0,.85));
-}
+.cta .stage .cap{ position:absolute; inset:auto 0 0 0; padding:30px 20px 16px; font-size:14px; letter-spacing:1px; background:linear-gradient(transparent,rgba(0,0,0,.85)); }
 .back-btn{
   margin-top:34px; background:rgba(255,255,255,.1); color:#fff; border:none;
   padding:14px 34px; border-radius:60px; font:600 15px 'Poppins',sans-serif; cursor:pointer; transition:.3s;
@@ -310,11 +290,10 @@ footer{ text-align:center; padding:40px 20px 60px; font-size:13px; opacity:.45; 
 <canvas id="fx"></canvas>
 <div class="ambient" id="ambient"></div>
 
-<!-- ======================= КОНВЕРТ ======================= -->
 <div id="envelope" role="button" tabindex="0" aria-label="Открыть приглашение">
   <div class="brandline">Слава приглашает тебя</div>
   <h1>На день рождения</h1>
-  <div class="sub">Тебе пришло персональное приглашение — открой конверт 🎄</div>
+  <div class="sub">Да-да, это приглашение. Не отмазывайся — открывай 🎄</div>
 
   <div class="env-wrap">
     <div class="envelope" id="envelopeBox">
@@ -328,23 +307,22 @@ footer{ text-align:center; padding:40px 20px 60px; font-size:13px; opacity:.45; 
     </div>
   </div>
 
-  <div class="hint">нажми на конверт или кнопку</div>
+  <div class="hint">жми на конверт, не тупи 😄</div>
 </div>
 
-<!-- ======================= ПРИГЛАШЕНИЕ ======================= -->
 <main id="invitation">
 
   <section class="hero">
     <div class="hero-bg" id="heroBg"></div>
     <div class="kicker">Арт-парк «Штыковские пруды»</div>
-    <h2>С днём рождения!</h2>
-    <div class="name">Слава приглашает тебя 🎉</div>
+    <h2>У меня день рождения!</h2>
+    <div class="name">Слава зовёт 🎉</div>
     <p class="lead">
-      Отмечаю свой день рождения на природе: баня в лесу, зимние забавы у пруда,
-      шашлык и тёплая компания. Буду очень рад видеть именно тебя!
+      Баня, пруд, шашлык и компания, где все будут готовы раньше, чем шашлык.
+      Кто не придёт — сам себя наказал.
     </p>
     <div class="pill">
-      🗓️ День рождения — <b>1 декабря</b>, а празднуем <b>5 декабря 2026</b><br>
+      🗓️ Родился 1 декабря, отмечаем 5-го — нужен разогрев.<br>
       📍 Штыковские пруды, Приморский край, район Артём
     </div>
 
@@ -361,29 +339,28 @@ footer{ text-align:center; padding:40px 20px 60px; font-size:13px; opacity:.45; 
   <section>
     <div class="wrap">
       <h2 class="sec-title reveal">Что, где, когда и как</h2>
-      <p class="sec-sub reveal">Коротко о главном, чтобы ты всё знал(а) заранее.</p>
+      <p class="sec-sub reveal">Коротко и без воды. Ну, кроме пруда.</p>
       <div class="grid">
         <div class="box reveal" data-tilt>
-          <div class="ico">🎁</div>
+          <div class="ico">🍢</div>
           <h3>Что</h3>
-          <p>Празднуем мой день рождения на природе: <b>баня в лесу</b>, купание в пруду,
-             шашлык, зимние забавы и много общения.</p>
+          <p>Баня, пруд, шашлык и напитки посерьёзнее компота. Кто не пьёт —
+             назначается ответственным за мангал и красивые сторис.</p>
         </div>
         <div class="box reveal" data-tilt>
           <div class="ico">📍</div>
           <h3>Где</h3>
-          <p><b>Арт-парк «Штыковские пруды»</b><br>Приморский край, район Артём.</p>
+          <p><b>Арт-парк «Штыковские пруды»</b>, Приморский край, район Артём.<br>Не гугли — довезу.</p>
         </div>
         <div class="box reveal" data-tilt>
           <div class="ico">🕒</div>
           <h3>Когда</h3>
-          <p><b>5 декабря 2026</b><br>с 15:00 до 18:00 (примерно 3 часа).</p>
+          <p><b>5 декабря 2026</b>, с 15:00 до 18:00.<br>По факту — пока не разойдёмся.</p>
         </div>
         <div class="box reveal" data-tilt>
           <div class="ico">🧖</div>
           <h3>Как</h3>
-          <p>Приходи к 15:00, возьми <b>купальник/плавки, полотенце и тёплую одежду</b> —
-             остальное я организую.</p>
+          <p>Приходи к 15:00. <b>Купальник — по желанию, тосты — строго обязательны.</b></p>
         </div>
       </div>
     </div>
@@ -391,8 +368,8 @@ footer{ text-align:center; padding:40px 20px 60px; font-size:13px; opacity:.45; 
 
   <section style="background:linear-gradient(180deg,#0b0b0d,#111114,#0b0b0d)">
     <div class="wrap">
-      <h2 class="sec-title reveal">Как там красиво 📸</h2>
-      <p class="sec-sub reveal">Фотографии места, где пройдёт праздник. Нажми на любое — откроется во весь экран.</p>
+      <h2 class="sec-title reveal">Где мы это устроим 📸</h2>
+      <p class="sec-sub reveal">Локация — пушка. Листай, нажимай и завидуй сам себе, что ты в списке гостей.</p>
       <div class="gallery" id="gallery"></div>
     </div>
   </section>
@@ -400,14 +377,14 @@ footer{ text-align:center; padding:40px 20px 60px; font-size:13px; opacity:.45; 
   <section id="road">
     <div class="wrap">
       <h2 class="sec-title reveal">Как добраться 🚕</h2>
-      <p class="sec-sub reveal">О дороге можно не переживать — я всё организую.</p>
+      <p class="sec-sub reveal">Дорогу беру на себя — ты отвечаешь только за настроение.</p>
       <div class="road">
         <div class="road-col">
           <div class="box reveal" data-tilt>
             <div class="ico">🚕</div>
             <h3>Такси</h3>
-            <p>Я закажу <b>такси</b> и заберу всех <b>по пути</b>.
-               Конечная точка — Арт-парк «Штыковские пруды». От тебя нужно только быть на связи.</p>
+            <p>Я закажу <b>такси</b> и заберу всех <b>по пути</b>. Конечная — «Штыковские пруды».
+               Обратно тоже развезу — даже тех, кто переоценил свои силы 😄</p>
           </div>
           <div class="box reveal" data-tilt>
             <div class="ico">📍</div>
@@ -429,17 +406,17 @@ footer{ text-align:center; padding:40px 20px 60px; font-size:13px; opacity:.45; 
 
   <section class="cta">
     <div class="wrap reveal">
-      <div class="big">Буду очень рад тебя видеть! 🎉</div>
+      <div class="big">Жду! Кто не придёт — будет слушать, как было круто, от других 😄</div>
       <div class="sign">— Слава</div>
       <div class="stage">
         <img src="images/img_0545.webp" alt="Салют" loading="lazy">
-        <div class="cap">🎆 Салют в честь праздника — 5 декабря 2026</div>
+        <div class="cap">🎆 Салют, какого достойна эта компания — 5 декабря 2026</div>
       </div>
       <button class="back-btn" id="backBtn" type="button">← Вернуться к конверту</button>
     </div>
   </section>
 
-  <footer>Сделано с любовью для друзей и близких · Штыковские пруды</footer>
+  <footer>Шутки ради, а праздник — настоящий · Штыковские пруды</footer>
 </main>
 
 <div id="lightbox">
@@ -452,24 +429,23 @@ footer{ text-align:center; padding:40px 20px 60px; font-size:13px; opacity:.45; 
 </div>
 
 <script>
-/* ---------- галерея: подписи по заголовкам страниц-источников ---------- */
 const PHOTOS = [
-  ["img_0178","Пруды и мост"],
+  ["img_0458","Зимний пейзаж"],
   ["img_0433","Баня в лесу"],
-  ["img_0158","Большой пруд"],
-  ["img_0082","Катамараны на воде"],
-  ["img_0368","Прокат на пруду"],
   ["img_0330","Баня у пруда"],
   ["img_0502","Каминный зал"],
   ["img_0185","Парная"],
-  ["img_0019","Зимой в парке"],
-  ["img_0112","Зимние забавы"],
   ["img_0051","Горнолыжный склон"],
+  ["img_0019","Зимой в парке"],
   ["img_0102","Снежные развлечения"],
-  ["img_0545","Салют и фейерверки"],
-  ["img_0009","Банкетный зал"],
-  ["img_0224","Беседки в лесу"],
-  ["img_0325","Пикник в лесу"]
+  ["img_0112","Тюбинг"],
+  ["img_0570","Каток"],
+  ["img_0008","Банан по снегу"],
+  ["img_0085","Карусель на льду"],
+  ["img_0349","С горки вниз"],
+  ["img_0698","Зимние забавы"],
+  ["img_0545","Салют"],
+  ["img_0009","Банкетный зал"]
 ];
 const src = n => 'images/' + n + '.webp';
 
@@ -484,7 +460,6 @@ PHOTOS.forEach(([n, cap], i) => {
   gallery.appendChild(fig);
 });
 
-/* ---------- лайтбокс со свайпом ---------- */
 const lb = document.getElementById('lightbox');
 const lbImg = document.getElementById('lbImg');
 const lbCap = document.getElementById('lbCap');
@@ -517,7 +492,6 @@ lb.addEventListener('touchend', e => {
   if(Math.abs(dx) > 50) show(idx + (dx < 0 ? 1 : -1));
 }, { passive:true });
 
-/* ---------- 3D-tilt ---------- */
 if (matchMedia('(hover:hover)').matches) {
   document.querySelectorAll('[data-tilt]').forEach(el => {
     el.addEventListener('mousemove', e => {
@@ -530,7 +504,6 @@ if (matchMedia('(hover:hover)').matches) {
   });
 }
 
-/* ---------- снег ---------- */
 (function(){
   const amb = document.getElementById('ambient');
   for(let i=0;i<26;i++){
@@ -545,7 +518,6 @@ if (matchMedia('(hover:hover)').matches) {
   }
 })();
 
-/* ---------- конфетти ---------- */
 const canvas = document.getElementById('fx');
 const ctx = canvas.getContext('2d');
 let W, H;
@@ -579,7 +551,6 @@ function confetti(n){
   requestAnimationFrame(loop);
 })();
 
-/* ---------- открытие/закрытие ---------- */
 const envelope = document.getElementById('envelope');
 const box = document.getElementById('envelopeBox');
 const invitation = document.getElementById('invitation');
@@ -615,13 +586,11 @@ openBtn.addEventListener('click', e => { e.stopPropagation(); openInvitation(); 
 backBtn.addEventListener('click', closeInvitation);
 envelope.addEventListener('keydown', e => { if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openInvitation(); } });
 
-/* ---------- появление при скролле ---------- */
 const io = new IntersectionObserver(entries => {
   entries.forEach(en => { if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
 }, { threshold: 0.14 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-/* ---------- параллакс + прогресс ---------- */
 const heroBg = document.getElementById('heroBg');
 const progress = document.getElementById('progress');
 addEventListener('scroll', () => {
@@ -631,7 +600,6 @@ addEventListener('scroll', () => {
   progress.style.width = (max > 0 ? (y / max) * 100 : 0) + '%';
 }, { passive:true });
 
-/* ---------- отсчёт до 5 декабря 2026, 15:00 (UTC+10) ---------- */
 const target = new Date('2026-12-05T15:00:00+10:00').getTime();
 const pad = n => String(n).padStart(2,'0');
 function tick(){
