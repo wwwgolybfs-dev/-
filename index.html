@@ -2,388 +2,320 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content=th=device-width, initial-scale=1.0">
-    <title>Приглашение на день рождения</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приглашение на день рождения · Слава</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@400;600;700&display=swap');
 
         :root {
             --gold: #f4d03f;
+            --gold-2: #e6b800;
             --dark: #0d0d0d;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #0a0a0a, #1f1f1f);
             color: #fff;
-            overflow: hidden;
-            height: 100vh;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        /* ==================== КОНВЕРТ + ЭКРАН ОТКРЫТИЯ ==================== */
+        /* ============ КОНВЕРТ (первый экран) ============ */
         #envelope {
-            width: 100vw;
-            height: 100vh;
-            background: #2c2c2c;
             position: fixed;
-            top: 0;
-            left: 0;
+            inset: 0;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
+            background: radial-gradient(circle at 50% 28%, #262626, #0a0a0a 72%);
             z-index: 100;
             cursor: pointer;
-            transition: transform 1.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+            transition: opacity .8s ease, transform .8s ease;
         }
+        #envelope.opened { opacity: 0; transform: scale(1.12); pointer-events: none; }
 
-        .envelope-content {
-            background: linear-gradient(180deg, #3a2f1f, #2a2118);
-            width: 560px;
-            height: 380px;
-            border-radius: 18px;
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.9),
-                        inset 0 0 120px rgba(255, 200, 50, 0.25);
-            position: relative;
+        .env-headline { text-align: center; margin-bottom: 38px; padding: 0 20px; }
+        .env-headline .inviter {
+            font-size: 15px; letter-spacing: 6px; text-transform: uppercase;
+            color: var(--gold); opacity: .95; font-weight: 600;
+        }
+        .env-headline h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(34px, 7vw, 52px);
+            margin: 12px 0 8px;
+        }
+        .env-headline p { font-size: 17px; opacity: .75; }
+
+        .env-wrap { position: relative; width: min(560px, 92vw); height: 380px; perspective: 1200px; }
+
+        .envelope {
+            position: absolute; inset: 0;
+            background: linear-gradient(180deg, #3a2f1f, #241c12);
+            border-radius: 16px;
+            box-shadow: 0 40px 90px rgba(0,0,0,.85), inset 0 0 120px rgba(255,200,50,.14);
             overflow: hidden;
         }
-
-        .envelope-content::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(45deg, 
-                rgba(255,255,255,0.12) 0%,
-                transparent 50%,
-                rgba(0,0,0,0.35) 100%);
+        .envelope::before {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,.1) 0%, transparent 50%, rgba(0,0,0,.35) 100%);
             animation: shine 5s linear infinite;
         }
+        @keyframes shine { 0% { transform: translateX(-30%); } 100% { transform: translateX(30%); } }
 
-        @keyframes shine {
-            0% { transform: translateX(-30%); }
-            100% { transform: translateX(30%); }
-        }
-
-        .seals {
-            position: absolute;
-            top: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 18px;
+        .flap {
+            position: absolute; top: 0; left: 0; width: 100%; height: 55%;
+            background: linear-gradient(180deg, #4a3b24, #2c2317);
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+            transform-origin: top;
+            transition: transform .7s cubic-bezier(.6, -0.1, .4, 1);
             z-index: 3;
         }
+        .envelope.open .flap { transform: rotateX(180deg); }
 
         .seal {
-            width: 68px;
-            height: 68px;
-            background: #c8102e;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 9px;
-            font-weight: 800;
-            text-align: center;
-            line-height: 1.1;
-            box-shadow: 0 0 0 14px rgba(200, 16, 46, 0.4);
-            transform: rotate(-4deg);
+            position: absolute; top: calc(55% - 42px); left: 50%;
+            transform: translateX(-50%);
+            width: 84px; height: 84px; border-radius: 50%;
+            background: radial-gradient(circle at 35% 30%, #e0485a, #a50d26);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 36px;
+            box-shadow: 0 0 0 12px rgba(165,13,38,.22), 0 10px 24px rgba(0,0,0,.55);
+            z-index: 6;
+            transition: opacity .4s ease, transform .4s ease;
         }
+        .envelope.open .seal { opacity: 0; transform: translateX(-50%) scale(.4); }
 
-        .seal::after {
-            content: "С ЮР. ДНЁМ!";
-            font-size: 11px;
+        .env-inner {
+            position: absolute; inset: 0;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: flex-end;
+            padding-bottom: 42px;
+            z-index: 2;
         }
-
-        .title {
+        .env-inner .env-title {
             font-family: 'Playfair Display', serif;
-            font-size: 34px;
-            margin-top: 70px;
-            color: #f4d03f;
-            text-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
+            font-size: 30px; color: var(--gold);
+            text-shadow: 0 6px 15px rgba(0,0,0,.7);
         }
-
-        .subtitle {
-            font-size: 17px;
-            opacity: 0.85;
-            letter-spacing: 4px;
-            margin: 10px 0 30px;
-        }
+        .env-inner .env-sub { font-size: 14px; letter-spacing: 3px; opacity: .8; margin: 6px 0 24px; }
 
         .btn {
-            background: #1a1a1a;
-            color: #f4d03f;
-            border: 3px solid #f4d03f;
-            padding: 16px 48px;
-            font-size: 18px;
-            font-weight: 700;
-            letter-spacing: 3px;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-transform: uppercase;
-            box-shadow: 0 10px 0 #000;
+            background: #1a1a1a; color: var(--gold);
+            border: 3px solid var(--gold); padding: 15px 46px;
+            font-size: 17px; font-weight: 700; letter-spacing: 3px;
+            cursor: pointer; text-transform: uppercase;
+            box-shadow: 0 10px 0 #000; transition: all .3s;
+            position: relative; z-index: 10;
         }
+        .btn:hover { transform: translateY(-6px); box-shadow: 0 16px 0 #000; }
 
-        .btn:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 16px 0 #000;
-        }
+        .hint { margin-top: 28px; font-size: 14px; color: var(--gold); opacity: .6; animation: blink 2s infinite; }
+        @keyframes blink { 50% { opacity: 1; } }
 
-        .open-text {
-            position: absolute;
-            bottom: 70px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 19px;
-            color: #f4d03f;
-            opacity: 0.6;
-            animation: blink 2s infinite;
-        }
-
-        @keyframes blink {
-            50% { opacity: 1; }
-        }
-
-        /* ==================== ОСНОВНАЯ ЧАСТЬ ПРИГЛАШЕНИЯ ==================== */
+        /* ============ ПРИГЛАШЕНИЕ (вторая часть) ============ */
         #invitation {
             display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: linear-gradient(135deg, #0a0a0a, #1f1f1f);
-            z-index: 50;
-            overflow: hidden;
+            min-height: 100vh;
+            padding: 60px 20px;
+            background:
+                radial-gradient(circle at 15% 15%, rgba(244,208,63,.10), transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(244,208,63,.08), transparent 40%),
+                linear-gradient(135deg, #0a0a0a, #1f1f1f);
             align-items: center;
             justify-content: center;
+            opacity: 0;
+            transform: scale(.9);
+            transition: opacity .8s ease, transform .8s ease;
         }
+        #invitation.show { display: flex; opacity: 1; transform: scale(1); }
 
         .card {
-            width: 680px;
-            background: rgba(15, 15, 15, 0.95);
-            border-radius: 24px;
-            box-shadow: 0 50px 100px rgba(0, 0, 0, 0.95),
-                        inset 0 0 120px rgba(244, 208, 63, 0.18);
-            padding: 55px 45px;
-            position: relative;
-            color: #fff;
+            width: min(760px, 100%);
+            background: rgba(15,15,15,.96);
+            border: 1px solid rgba(244,208,63,.25);
+            border-radius: 26px;
+            box-shadow: 0 50px 100px rgba(0,0,0,.9), inset 0 0 120px rgba(244,208,63,.1);
+            padding: 52px 46px;
             text-align: center;
         }
 
-        .background {
-            position: absolute;
-            inset: 0;
-            background: url('https://shtprudy.ru/wp-content/uploads/2024/09/shtykovskie-prudy-proud.jpg') center/cover no-repeat;
-            opacity: 0.28;
-            filter: brightness(0.82) contrast(1.15);
-            z-index: -1;
+        .stamp {
+            display: inline-block;
+            background: var(--gold); color: #1a1a1a;
+            padding: 9px 30px; border-radius: 40px;
+            font-size: 14px; font-weight: 700; letter-spacing: 2.5px;
+            box-shadow: 0 8px 20px rgba(0,0,0,.5);
+            margin-bottom: 26px;
         }
 
-        .location-stamp {
-            position: absolute;
-            top: 35px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(244, 208, 63, 0.98);
-            color: #1a1a1a;
-            padding: 10px 38px;
-            font-size: 15px;
-            font-weight: 700;
-            letter-spacing: 2.5px;
-            border-radius: 40px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-            z-index: 10;
-            white-space: nowrap;
-        }
-
-        h1 {
+        .card h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 52px;
-            color: #f4d03f;
-            text-shadow: 0 0 25px rgba(244, 208, 63, 0.7);
-            margin-bottom: 8px;
+            font-size: clamp(34px, 6vw, 52px);
+            color: var(--gold);
+            text-shadow: 0 0 25px rgba(244,208,63,.6);
         }
+        .card .who { font-size: 19px; margin: 10px 0 6px; opacity: .92; }
 
-        .subtitle-small {
-            font-size: 21px;
-            margin-bottom: 35px;
-            opacity: 0.92;
+        .date-note {
+            margin: 22px auto 6px; max-width: 580px;
+            background: rgba(244,208,63,.12);
+            border: 1px dashed rgba(244,208,63,.5);
+            border-radius: 14px; padding: 16px 22px;
+            font-size: 16px; line-height: 1.65;
         }
+        .date-note strong { color: var(--gold); }
 
-        .info {
-            font-size: 21px;
-            line-height: 1.7;
-            margin: 25px 0 40px;
-            max-width: 520px;
-            margin-left: auto;
-            margin-right: auto;
+        .grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+            margin: 32px 0 8px; text-align: left;
         }
-
-        .info strong {
-            color: #f4d03f;
-            font-size: 24px;
+        .box {
+            background: rgba(255,255,255,.04);
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 16px; padding: 20px 22px;
+            transition: transform .3s, border-color .3s;
         }
+        .box:hover { transform: translateY(-4px); border-color: rgba(244,208,63,.4); }
+        .box .ico { font-size: 30px; margin-bottom: 10px; }
+        .box h3 { color: var(--gold); font-size: 15px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+        .box p { font-size: 16px; line-height: 1.6; opacity: .93; }
+        .box p strong { color: #fff; font-size: 18px; }
 
-        .time {
-            font-size: 29px;
-            font-weight: 700;
-            color: #f4d03f;
-            margin: 30px 0 45px;
-        }
+        .photos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 28px 0 8px; }
+        .photos figure { border-radius: 14px; overflow: hidden; box-shadow: 0 10px 24px rgba(0,0,0,.5); aspect-ratio: 4 / 3; background: #222; }
+        .photos img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-        .photo-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
-            gap: 22px;
-            margin: 40px 0;
-        }
-
-        .photo-item {
-            border-radius: 18px;
-            overflow: hidden;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
-            transition: transform 0.4s;
-        }
-
-        .photo-item:hover {
-            transform: scale(1.06);
-        }
-
-        .photo-item img {
-            width: 100%;
-            height: 190px;
-            object-fit: cover;
-        }
-
-        .thank-you {
-            font-size: 24px;
-            color: #f4d03f;
-            margin-top: 30px;
+        .closing {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px; color: var(--gold); margin-top: 28px;
             animation: pulse 2.2s infinite;
         }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.06); }
-        }
+        .sign { margin-top: 6px; font-size: 17px; opacity: .8; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
 
         .back-btn {
-            position: absolute;
-            bottom: 35px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(255,255,255,0.12);
-            color: #fff;
-            border: none;
-            padding: 13px 30px;
-            font-size: 15px;
-            cursor: pointer;
-            transition: all 0.3s;
+            margin-top: 30px; background: rgba(255,255,255,.1); color: #fff;
+            border: none; padding: 13px 32px; font-size: 15px; cursor: pointer;
+            border-radius: 40px; transition: all .3s;
         }
+        .back-btn:hover { background: var(--gold); color: #1a1a1a; }
 
-        .back-btn:hover {
-            background: #f4d03f;
-            color: #1a1a1a;
+        @media (max-width: 640px) {
+            .grid { grid-template-columns: 1fr; }
+            .photos { grid-template-columns: 1fr 1fr; }
+            .card { padding: 34px 22px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ==================== КОНВЕРТ + ЭКРАН ОТКРЫТИЯ ==================== -->
-    <div id="envelope">
-        <div class="envelope-content">
-            <!-- Печать "С ЮР. ДНЁМ!" -->
-            <div class="seals">
-                <div class="seal">🎂</div>
-                <div class="seal">🎂</div>
-            </div>
-
-            <div class="title">Приглашение</div>
-            <div class="subtitle">на день рождения</div>
-
-            <button class="btn" id="open-btn">Открыть конверт ✉️</button>
-
-            <div class="open-text">КЛИКНИТЕ ИЛИ НАЖМИТЕ</div>
+    <!-- ==================== КОНВЕРТ ==================== -->
+    <div id="envelope" role="button" tabindex="0" aria-label="Открыть конверт">
+        <div class="env-headline">
+            <div class="inviter">Слава приглашает тебя</div>
+            <h1>На день рождения</h1>
+            <p>Ты получил(а) персональное приглашение</p>
         </div>
+
+        <div class="env-wrap">
+            <div class="envelope" id="envelopeBox">
+                <div class="flap"></div>
+                <div class="seal">🎂</div>
+                <div class="env-inner">
+                    <div class="env-title">Приглашение</div>
+                    <div class="env-sub">ОТКРОЙ МЕНЯ</div>
+                    <button class="btn" id="openBtn" type="button">Открыть конверт ✉️</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="hint">нажми на конверт</div>
     </div>
 
-    <!-- ==================== ОСНОВНАЯ ЧАСТЬ ПРИГЛАШЕНИЯ ==================== -->
+    <!-- ==================== ПРИГЛАШЕНИЕ ==================== -->
     <div id="invitation">
         <div class="card">
-            <!-- Фон с реальной локации с сайта shtprudy.ru (пруд) -->
-            <div class="background"></div>
+            <span class="stamp">📍 Штыковские пруды · Приморский край</span>
 
-            <!-- Штамп локации -->
-            <div class="location-stamp">📍 Штыковские пруды • Артём</div>
+            <h2>С днём рождения! 🎉</h2>
+            <div class="who">Приглашаю тебя отпраздновать мой день рождения</div>
 
-            <h1>С ЮР. ДНЁМ, КУЗЬМА! 🎉</h1>
-            <div class="subtitle-small">5 декабря 2026</div>
-
-            <div class="info">
-                <strong>15:00 — 18:00</strong><br>
-                Штыковские пруды, Приморский край, район Артём<br><br>
-                Приходи — поставим баню в лесу, скинем воду в пруд для ныряния и устроим настоящий отдых!
+            <div class="date-note">
+                🗓️ Мой день рождения — <strong>1 декабря</strong>, но отмечать буду <strong>5 декабря 2026 года</strong>.<br>
+                Празднуем позже, чтобы всё успеть организовать — и чтобы ты точно смог(ла) прийти!
             </div>
 
-            <div class="time">
-                Время: <strong>15:00</strong><br>
-                Примерно 3 часа
+            <div class="grid">
+                <div class="box">
+                    <div class="ico">🎁</div>
+                    <h3>Что</h3>
+                    <p>Празднуем день рождения на природе: <strong>баня в лесу</strong>, купание в пруду, шашлык и тёплая компания.</p>
+                </div>
+                <div class="box">
+                    <div class="ico">📍</div>
+                    <h3>Где</h3>
+                    <p><strong>Штыковские пруды</strong>, Приморский край, район Артём.</p>
+                </div>
+                <div class="box">
+                    <div class="ico">🕒</div>
+                    <h3>Когда</h3>
+                    <p><strong>5 декабря 2026</strong><br>с 15:00 до 18:00 (примерно 3 часа).</p>
+                </div>
+                <div class="box">
+                    <div class="ico">🧖</div>
+                    <h3>Как</h3>
+                    <p>Приходи к 15:00, возьми с собой <strong>купальник/плавки, полотенце</strong> и хорошее настроение — остальное организую.</p>
+                </div>
             </div>
 
-            <!-- Фото с сайта базы отдыха (замени на свои, если хочешь) -->
-            <div class="photo-grid">
-                <div class="photo-item"><img src="https://shtprudy.ru/wp-content/uploads/2024/09/shtykovskie-prudy-proud.jpg" alt="Пруд"></div>
-                <div class="photo-item"><img src="https://shtprudy.ru/wp-content/uploads/2024/10/shtykovskie-prudy-park.jpg" alt="Парк"></div>
-                <div class="photo-item"><img src="https://shtprudy.ru/wp-content/uploads/2024/09/shtykovskie-prudy-forest.jpg" alt="Лес"></div>
-                <div class="photo-item"><img src="https://shtprudy.ru/wp-content/uploads/2024/10/shtykovskie-prudy-banquet.jpg" alt="Банкет"></div>
+            <div class="photos">
+                <figure><img src="https://shtprudy.ru/wp-content/uploads/2024/09/shtykovskie-prudy-proud.jpg" alt="Пруд" onerror="this.parentElement.style.display='none'"></figure>
+                <figure><img src="https://shtprudy.ru/wp-content/uploads/2024/10/shtykovskie-prudy-park.jpg" alt="Парк" onerror="this.parentElement.style.display='none'"></figure>
+                <figure><img src="https://shtprudy.ru/wp-content/uploads/2024/09/shtykovskie-prudy-forest.jpg" alt="Лес" onerror="this.parentElement.style.display='none'"></figure>
+                <figure><img src="https://shtprudy.ru/wp-content/uploads/2024/10/shtykovskie-prudy-banquet.jpg" alt="Банкет" onerror="this.parentElement.style.display='none'"></figure>
             </div>
 
-            <button class="btn" onclick="location.reload()">Открыть ещё раз</button>
-            <button class="back-btn" onclick="backToEnvelope()">Назад в конверт</button>
+            <div class="closing">Буду очень рад тебя видеть! 🎉</div>
+            <div class="sign">— Слава</div>
 
-            <div class="thank-you">СЮР. ДНЁМ, КУЗЬМА! 🎂</div>
+            <button class="back-btn" id="backBtn" type="button">← Вернуться к конверту</button>
         </div>
     </div>
 
     <script>
         const envelope = document.getElementById('envelope');
+        const envelopeBox = document.getElementById('envelopeBox');
         const invitation = document.getElementById('invitation');
-        const openBtn = document.getElementById('open-btn');
+        const openBtn = document.getElementById('openBtn');
+        const backBtn = document.getElementById('backBtn');
 
-        openBtn.addEventListener('click', () => {
-            // Анимация конверта (как в гиперпространстве)
-            envelope.style.transition = 'transform 1.8s cubic-bezier(0.25, 0.1, 0.25, 1)';
-            envelope.style.transform = 'translateY(-380px) scale(0.4) rotate(12deg)';
-
+        function openInvitation() {
+            envelopeBox.classList.add('open');       // откидываем клапан конверта
             setTimeout(() => {
-                envelope.style.display = 'none';
+                envelope.classList.add('opened');    // конверт растворяется
+                invitation.classList.add('show');    // показываем приглашение
                 invitation.style.display = 'flex';
-            }, 1800);
-        });
-
-        function backToEnvelope() {
-            invitation.style.transition = 'all 1.3s';
-            invitation.style.opacity = '0';
-            invitation.style.transform = 'scale(0.7)';
-
-            setTimeout(() => {
-                invitation.style.display = 'none';
-                envelope.style.display = 'flex';
-                envelope.style.transition = 'all 1.3s';
-                envelope.style.transform = 'translateY(0) scale(1) rotate(0deg)';
-            }, 1300);
+            }, 750);
         }
 
-        // Лёгкая анимация фото
-        document.querySelectorAll('.photo-item').forEach((el, i) => {
-            el.style.animation = `photoPop ${0.6 + i * 0.1}s ${i * 60}ms forwards`;
+        function closeInvitation() {
+            invitation.classList.remove('show');
+            setTimeout(() => {
+                invitation.style.display = 'none';
+                envelopeBox.classList.remove('open');
+                envelope.classList.remove('opened');
+            }, 700);
+        }
+
+        envelope.addEventListener('click', openInvitation);
+        openBtn.addEventListener('click', (e) => { e.stopPropagation(); openInvitation(); });
+        backBtn.addEventListener('click', closeInvitation);
+        envelope.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openInvitation(); }
         });
     </script>
 </body>
