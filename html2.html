@@ -666,5 +666,26 @@ function tick(){
 }
 tick(); setInterval(tick, 1000);
 </script>
+
+<script>
+/* ===== персональная ссылка: html2.html?to=Имя ===== */
+(function(){
+  var p = new URLSearchParams(location.search);
+  var raw = p.get('to') || p.get('name') || p.get('g') || '';
+  var g = (raw || '').replace(/[<>&"'`]/g, '').trim().slice(0, 40);
+  if(!g) return;
+  g = g.charAt(0).toUpperCase() + g.slice(1);
+
+  function setText(sel, txt){ var el = document.querySelector(sel); if(el) el.textContent = txt; }
+  document.title = g + ' · приглашение на днюху';
+  setText('#envelope .kicker', g + ' · 5 декабря · Штыковские пруды');
+  setText('#envelope .sub', g + ', тебе пришло приглашение. Не еби мозг — открывай, шашлык стынет 🍢');
+  setText('.letter .lt', g + ', тебе, ебать, дорогому другу');
+  setText('.env-face .s', g + ' · 5 декабря');
+  setText('.hero .kicker', g + ' · 5 декабря 2026');
+  setText('.hero .name', g + ', ты в списке. Слава зовёт 🍻');
+  setText('.cta .sign', '— Слава (ждёт именно тебя, ' + g + ')');
+})();
+</script>
 </body>
 </html>
