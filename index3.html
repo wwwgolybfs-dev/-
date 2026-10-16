@@ -372,59 +372,29 @@ body{ overflow-wrap:break-word; }
 </style>
 
 <style>
-/* ===== PETZKER POLISH · emerald / champagne / cinematic ===== */
-:root{--bg:#070908;--green:#a7e6b5;--purple:#d8c39a;--gold:#d8bd82;--text:#f4f4f5;--muted:rgba(244,244,235,.68);--grad:linear-gradient(120deg,#b6e8bf 0%,#d9c18b 100%)}
-body{background:#070908;color:#f6f5ef}
-.aurora .a1{background:radial-gradient(circle,#39734d,transparent 70%);opacity:.34}
-.aurora .a2{background:radial-gradient(circle,#8b7548,transparent 70%);opacity:.22}
-.aurora .a3{background:radial-gradient(circle,#b8d7be,transparent 70%);opacity:.09}
-.grid-overlay{opacity:.45;background-size:88px 88px}
-#preloader .bar i,.btn,.hero h2,.sec-title,.count .n,.cta .big{background-image:var(--grad)}
-#envelope h1{background:linear-gradient(120deg,#fffdf5 0%,#b6e8bf 54%,#d9c18b 100%);-webkit-background-clip:text;background-clip:text}
-#envelope .kicker,.hero .kicker{color:var(--gold)}
-#envelope .hint b,.hero .name,.box h3,.gallery figcaption,#lightbox .cap{color:var(--gold)}
-.btn{letter-spacing:1.2px;box-shadow:0 12px 34px rgba(174,213,174,.18)}
-.btn:hover{box-shadow:0 18px 42px rgba(174,213,174,.27)}
-section{padding-top:clamp(68px,8vw,104px);padding-bottom:clamp(68px,8vw,104px)}
-.hero{min-height:min(940px,100svh);padding-top:110px;padding-bottom:100px}
-.hero::after{background:linear-gradient(180deg,rgba(5,8,6,.57),rgba(5,8,6,.79) 52%,#070908 100%)}
-.hero h2{max-width:950px;text-wrap:balance;text-shadow:0 8px 42px rgba(0,0,0,.22)}
-.hero .lead{color:rgba(246,245,239,.82);max-width:700px}
-.pill{background:rgba(8,14,10,.52);border-color:rgba(216,189,130,.34);backdrop-filter:blur(16px);box-shadow:0 12px 45px rgba(0,0,0,.15)}
-.pill b{color:var(--gold)}
-.count .cell{min-width:100px;background:rgba(255,255,255,.045);border-color:rgba(216,189,130,.2);backdrop-filter:blur(16px);box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}
-.box{background:linear-gradient(145deg,rgba(255,255,255,.065),rgba(255,255,255,.018));border-color:rgba(216,189,130,.15);box-shadow:inset 0 1px 0 rgba(255,255,255,.035)}
-.box:hover{border-color:rgba(216,189,130,.42);box-shadow:0 22px 50px rgba(0,0,0,.32)}
-.box h3{letter-spacing:2px}
-.gallery figure,.map-frame,.cta .stage{border:1px solid rgba(216,189,130,.16);box-shadow:0 20px 50px rgba(0,0,0,.28)}
-.gallery figure{border-radius:20px}
-.links a{color:#e4d2a9;border-color:rgba(216,189,130,.38)}
-.links a:hover{background:var(--gold);color:#11130f}
-.hero-actions{display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap;margin-top:28px}
-.action-primary,.action-secondary{min-height:50px;padding:0 22px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;gap:12px;font:650 14px/1 'Inter',sans-serif;text-decoration:none;cursor:pointer;transition:transform .22s,background .22s,border-color .22s,box-shadow .22s}
-.action-primary{color:#10140f;background:linear-gradient(120deg,#c2e9c7,#d9c18b);box-shadow:0 12px 32px rgba(180,210,166,.17);border:1px solid rgba(255,255,255,.35)}
-.action-secondary{color:#f6f5ef;background:rgba(10,14,11,.45);border:1px solid rgba(255,255,255,.23);backdrop-filter:blur(14px)}
-.action-primary:hover,.action-secondary:hover{transform:translateY(-2px)}
-.action-secondary:hover{border-color:var(--gold);background:rgba(216,189,130,.1)}
-.rsvp-section{background:radial-gradient(ellipse at 50% 0%,rgba(85,117,80,.13),transparent 60%),linear-gradient(180deg,#090c09,#0b0d0b 60%,#070908)}
-.rsvp-wrap{max-width:820px}
-.section-eyebrow{text-align:center;color:var(--gold);font-size:11px;letter-spacing:4px;font-weight:700;margin-bottom:16px}
-.rsvp-card{max-width:720px;margin:0 auto;padding:clamp(18px,4vw,34px);border-radius:28px;background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025));border:1px solid rgba(216,189,130,.2);box-shadow:0 30px 80px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.05);backdrop-filter:blur(18px)}
-.rsvp-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-.rsvp-option{display:flex;align-items:center;gap:10px;text-align:left;min-height:78px;padding:12px;border-radius:17px;color:#f6f5ef;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.11);font:inherit;cursor:pointer;transition:background .2s,border-color .2s,transform .2s}
-.rsvp-option:hover{transform:translateY(-2px);border-color:rgba(216,189,130,.45)}
-.rsvp-option.selected{background:rgba(176,211,164,.1);border-color:rgba(190,221,174,.65);box-shadow:inset 0 0 0 1px rgba(190,221,174,.08)}
-.option-icon{width:32px;height:32px;flex:0 0 32px;display:grid;place-items:center;border-radius:11px;background:rgba(216,189,130,.13);color:var(--gold);font-size:17px}
-.rsvp-option strong,.rsvp-option small{display:block}.rsvp-option strong{font-size:13px}.rsvp-option small{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.35}
-.rsvp-label{display:block;margin:24px 0 9px;font-size:13px;font-weight:600}.rsvp-label span{color:var(--muted);font-weight:400}
-.rsvp-input{display:block;width:100%;min-height:50px;padding:0 15px;border-radius:14px;border:1px solid rgba(255,255,255,.14);background:rgba(0,0,0,.2);color:#fff;font:inherit;outline:none;transition:border-color .2s,box-shadow .2s}
-.rsvp-input:focus{border-color:rgba(216,189,130,.7);box-shadow:0 0 0 3px rgba(216,189,130,.1)}
-.rsvp-send{display:flex;justify-content:center;align-items:center;gap:12px;width:100%;min-height:52px;margin-top:14px;border:0;border-radius:15px;background:linear-gradient(120deg,#c2e9c7,#d9c18b);color:#12150f;font:750 14px 'Inter',sans-serif;cursor:pointer;transition:transform .2s,filter .2s}
-.rsvp-send:hover{transform:translateY(-2px);filter:brightness(1.04)}
-.rsvp-note{font-size:12px;line-height:1.6;text-align:center;color:var(--muted);margin:13px auto 0;max-width:470px}
-button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
-@media(max-width:600px){.hero-actions{width:100%;max-width:380px;margin-left:auto;margin-right:auto}.action-primary,.action-secondary{width:100%;min-height:52px}.rsvp-options{grid-template-columns:1fr}.rsvp-option{min-height:64px}.rsvp-card{border-radius:22px}.count{gap:8px}.count .cell{min-width:calc(25% - 8px);padding:14px 5px}.count .n{font-size:clamp(26px,8vw,36px)}.count .l{font-size:9px;letter-spacing:1px}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.aurora span{animation:none!important}#fx{display:none}}
+/* Editorial invitation redesign: forest green, champagne and wax seal */
+:root{--bg:#080b09;--green:#b8d9b5;--purple:#d8c49b;--gold:#d9c18b;--text:#f4f0e7;--muted:rgba(244,240,231,.65);--grad:linear-gradient(120deg,#c9e1c3,#d9c18b)}
+body{background:#080b09;color:#f4f0e7}
+.aurora .a1{background:radial-gradient(circle,#3b6247,transparent 70%);opacity:.3}.aurora .a2{background:radial-gradient(circle,#89734a,transparent 70%);opacity:.18}.aurora .a3{opacity:.07}
+.grid-overlay{opacity:.28;background-size:90px 90px}
+#envelope{isolation:isolate;overflow-y:auto;padding:34px 0;background:radial-gradient(ellipse at 50% 45%,rgba(45,71,48,.22),transparent 46%),linear-gradient(180deg,rgba(7,10,8,.2),rgba(7,10,8,.86))}
+.env-ambient{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}.env-ambient:before{content:"";position:absolute;inset:18px;border:1px solid rgba(217,193,139,.19);border-radius:5px}.env-ambient:after{content:"";position:absolute;inset:27px;border:1px solid rgba(217,193,139,.07);border-radius:3px}.env-ambient span{position:absolute;width:260px;height:260px;border:1px solid rgba(217,193,139,.12);border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%)}.env-ambient span:nth-child(2){width:330px;height:330px;border-style:dashed;opacity:.38;animation:seal-spin 50s linear infinite}.env-ambient span:nth-child(3){width:420px;height:420px;opacity:.22}
+@keyframes seal-spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+.env-inner{width:min(100%,760px);padding:20px 24px;position:relative}
+.invite-topline,.envelope-bottomline{width:min(100%,620px);display:flex;align-items:center;justify-content:space-between;gap:12px;color:rgba(230,218,187,.7);font-size:9px;font-weight:700;letter-spacing:2.2px}.invite-topline{padding-bottom:17px;border-bottom:1px solid rgba(217,193,139,.19)}.topline-mark{display:grid;place-items:center;width:30px;height:30px;border:1px solid rgba(217,193,139,.65);border-radius:50%;font-family:'Syne',sans-serif;color:var(--gold);font-size:15px;letter-spacing:0}.topline-date{font-variant-numeric:tabular-nums}
+.envelope-heading{margin-top:clamp(24px,4vh,44px)}#envelope .kicker{color:var(--gold);font-size:10px;letter-spacing:4px;opacity:0;animation:up .8s .15s cubic-bezier(.2,.7,.3,1) forwards}
+#envelope h1{font-size:clamp(48px,8vw,88px);line-height:.88;letter-spacing:-3px;margin:16px 0 18px;background:linear-gradient(120deg,#fffdf5 4%,#c9dfc2 55%,#d9c18b 100%);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:0;animation:up .9s .25s cubic-bezier(.2,.7,.3,1) forwards}#envelope h1 em{font-style:normal;font-weight:600;font-family:Georgia,serif;letter-spacing:-4px}
+#envelope .sub{font-size:14px;line-height:1.85;color:rgba(244,240,231,.66);opacity:0;animation:up .9s .4s cubic-bezier(.2,.7,.3,1) forwards}
+.env-wrap{margin:clamp(26px,4vh,42px) 0 0;opacity:0;animation:up 1s .45s cubic-bezier(.2,.7,.3,1) forwards}.envelope{width:min(440px,82vw);height:min(282px,53vw);min-height:205px;filter:drop-shadow(0 34px 42px rgba(0,0,0,.52));transition:filter .4s}#envelope:not(.turning) .envelope:hover{filter:drop-shadow(0 40px 52px rgba(0,0,0,.65)) drop-shadow(0 0 22px rgba(183,211,168,.08))}
+.env-body{border-radius:4px;background:linear-gradient(145deg,#27392b,#17251b 48%,#101a13);border:1px solid rgba(217,193,139,.62);box-shadow:inset 0 0 0 7px rgba(255,255,255,.018),inset 0 0 55px rgba(0,0,0,.3);overflow:hidden}.env-body:before{content:"";position:absolute;inset:12px;border:1px solid rgba(217,193,139,.18);z-index:2;pointer-events:none}.env-body:after{background:linear-gradient(115deg,transparent 25%,rgba(217,193,139,.13) 48%,transparent 70%);animation:shine 7s ease-in-out infinite}
+.flap{background:linear-gradient(160deg,#405842,#263b2a 65%,#1b2b1e);filter:drop-shadow(0 2px 2px rgba(0,0,0,.3));border-radius:4px 4px 0 0}
+.letter{left:8%;right:8%;bottom:12%;height:76%;border-radius:3px;background:linear-gradient(135deg,#f8f3e7,#e8dfca);color:#25271f;box-shadow:0 15px 35px rgba(0,0,0,.4);transform:translateY(30%)}.envelope.open .letter{transform:translateY(-27%)}.letter-content{width:100%;padding:16px 12px 12px}.letter-eyebrow{font-size:8px;letter-spacing:3px;color:#8b7952;font-weight:800;margin-bottom:8px}.letter .lt{font-family:Georgia,serif;font-size:clamp(18px,3vw,25px);color:#20251d;font-weight:700}.letter .ld{font-size:10px;line-height:1.6;color:#6e6a5b;margin-top:7px;letter-spacing:.3px}.letter-line{width:40px;height:1px;background:#c0a873;margin:10px auto 7px}.letter-sign{font-family:Georgia,serif;font-style:italic;color:#68634f;font-size:10px}
+.env-face{height:53%;padding:18px 10px 22px;border-radius:0 0 4px 4px;justify-content:flex-end;background:linear-gradient(160deg,rgba(255,255,255,.015),rgba(0,0,0,.15))}.env-face-top{font-size:8px;letter-spacing:2px;color:rgba(232,220,188,.7);margin-bottom:9px}.env-face .t{font-family:Georgia,serif;font-weight:700;font-size:clamp(22px,4vw,29px);letter-spacing:.5px;color:#f5efdf}.env-face .s{font-size:8px;letter-spacing:2.2px;color:rgba(232,220,188,.72);margin-top:7px}.wax-seal{position:absolute;top:-17px;left:50%;transform:translateX(-50%);width:47px;height:47px;display:grid;place-items:center;border-radius:50%;z-index:7;background:radial-gradient(circle at 35% 28%,#e8d5a1,#aa8548 62%,#73562e);border:2px solid #e0c68d;box-shadow:0 4px 12px rgba(0,0,0,.4),inset 0 0 0 3px rgba(83,56,27,.22);color:#34291a;font:700 22px Georgia,serif}.envelope.open .wax-seal{opacity:0;transform:translate(-50%,-14px) scale(.7);transition:opacity .22s,transform .35s}
+.envelope-bottomline{margin-top:23px;padding-top:14px;border-top:1px solid rgba(217,193,139,.19);font-size:8px;letter-spacing:1.5px}.bottomline-dot{color:var(--gold)}.hint{margin-top:21px;font-size:11px;color:rgba(244,240,231,.53);letter-spacing:1px;opacity:0;animation:up .8s .65s forwards}.hint b{color:var(--gold)}
+.btn{margin-top:17px;position:relative;z-index:5;display:inline-flex;align-items:center;gap:25px;padding:15px 23px 15px 27px;border:1px solid rgba(217,193,139,.55);border-radius:3px;background:linear-gradient(120deg,#c9dfc2,#d9c18b);color:#151b14;font:750 10px 'Inter',sans-serif;letter-spacing:2px;text-transform:uppercase;box-shadow:0 12px 35px rgba(0,0,0,.2);opacity:0;animation:up .8s .75s forwards}.btn:hover{transform:translateY(-2px);box-shadow:0 16px 38px rgba(0,0,0,.35)}
+.hero{min-height:min(940px,100svh);padding-top:110px;padding-bottom:100px}.hero:after{background:linear-gradient(180deg,rgba(5,8,6,.57),rgba(5,8,6,.8) 52%,#080b09 100%)}.hero h2,.sec-title,.count .n,.cta .big{background-image:var(--grad)}.hero .kicker,.hero .name,.box h3,.gallery figcaption,#lightbox .cap{color:var(--gold)}.hero h2{max-width:950px;text-shadow:0 8px 42px rgba(0,0,0,.22)}.hero .lead{color:rgba(246,245,239,.82);max-width:700px}.pill{background:rgba(8,14,10,.52);border-color:rgba(217,193,139,.34);backdrop-filter:blur(16px);box-shadow:0 12px 45px rgba(0,0,0,.15)}.count .cell{min-width:100px;background:rgba(255,255,255,.045);border-color:rgba(217,193,139,.2);backdrop-filter:blur(16px);box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}.box{background:linear-gradient(145deg,rgba(255,255,255,.065),rgba(255,255,255,.018));border-color:rgba(217,193,139,.15);box-shadow:inset 0 1px 0 rgba(255,255,255,.035)}.box:hover{border-color:rgba(217,193,139,.42);box-shadow:0 22px 50px rgba(0,0,0,.32)}.gallery figure,.map-frame,.cta .stage{border:1px solid rgba(217,193,139,.16);box-shadow:0 20px 50px rgba(0,0,0,.28)}.gallery figure{border-radius:15px}.links a{color:#e4d2a9;border-color:rgba(217,193,139,.38)}.links a:hover{background:var(--gold);color:#11130f}#lightbox .close,#lightbox .nav{background:transparent;border:0;line-height:1}button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+@media(max-width:600px){#envelope{padding:22px 0}.env-inner{padding:16px 22px}.invite-topline,.envelope-bottomline{font-size:7px;letter-spacing:1px}.topline-mark{width:25px;height:25px}#envelope h1{font-size:clamp(47px,15vw,68px);letter-spacing:-2px}#envelope h1 em{letter-spacing:-2px}#envelope .sub{font-size:12px}.envelope{width:min(400px,84vw);height:clamp(205px,55vw,260px)}.letter-content{padding:12px 8px}.letter .lt{font-size:17px}.letter .ld{font-size:9px}.letter-sign{font-size:8px}.wax-seal{width:39px;height:39px;top:-14px;font-size:18px}.env-face{padding-bottom:17px}.env-face-top{font-size:7px;letter-spacing:1.5px}.env-face .s{letter-spacing:1.2px;font-size:7px}.envelope-bottomline{margin-top:18px;padding-top:12px}.hint{margin-top:17px}.btn{margin-top:13px;padding:14px 18px 14px 21px;font-size:9px;letter-spacing:1.5px}.hero h2{font-size:clamp(30px,10.5vw,48px)}.count .cell{min-width:calc(25% - 8px);padding:14px 5px}.count .n{font-size:clamp(26px,8vw,36px)}.count .l{font-size:9px;letter-spacing:1px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.aurora span{animation:none!important}#fx{display:none}.env-ambient span:nth-child(2){animation:none}}
 </style>
 
 </head>
@@ -442,22 +412,24 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
 
 <!-- ======================= КОНВЕРТ ======================= -->
 <div id="envelope" role="button" tabindex="0" aria-label="Открыть приглашение">
+  <div class="env-ambient" aria-hidden="true"><span></span><span></span><span></span></div>
   <div class="env-inner">
-    <div class="kicker">Слава зовёт · будет жарко · 5 декабря</div>
-    <h1>Днюха!</h1>
-    <div class="sub">Тебе пришло приглашение. Не еби мозг — открывай, шашлык стынет 🍢</div>
-
+    <div class="invite-topline"><span class="topline-mark">S</span><span>ЛИЧНОЕ ПРИГЛАШЕНИЕ</span><span class="topline-date">05 / XII / 2026</span></div>
+    <div class="envelope-heading">
+      <div class="kicker">Есть повод собраться</div>
+      <h1>Слава<br><em>зовёт.</em></h1>
+      <div class="sub">Одна ночь. Свои люди. Штыковские пруды.<br>Остальное расскажу внутри.</div>
+    </div>
     <div class="env-wrap">
       <div class="envelope" id="envelopeBox">
-        <div class="letter"><div><div class="lt">Тебе, ебать, дорогому другу</div><div class="ld">5 декабря · Штыковские пруды · 15:00</div></div></div>
-        <div class="env-body"></div>
-        <div class="flap"></div>
-        <div class="env-face"><div class="t">Приглашение</div><div class="s">от Славы (да, того самого)</div></div>
+        <div class="letter"><div class="letter-content"><div class="letter-eyebrow">SAVE THE DATE</div><div class="lt">Ну что, дружище…</div><div class="ld">5 декабря 2026 · 15:00<br>Штыковские пруды</div><div class="letter-line"></div><div class="letter-sign">С любовью и лёгкой угрозой — Слава</div></div></div>
+        <div class="env-body"></div><div class="flap"></div>
+        <div class="env-face"><div class="env-face-top">ОТ КОГО: СЛАВА</div><div class="t">Для своих</div><div class="s">Открой — и всё поймёшь</div><div class="wax-seal" aria-hidden="true">С</div></div>
       </div>
     </div>
-
-    <div class="hint">жми на <b>конверт</b>, не тупи, бля ✨</div>
-    <button class="btn" id="openBtn" type="button">Открыть</button>
+    <div class="envelope-bottomline"><span>ПРИМОРСКИЙ КРАЙ</span><span class="bottomline-dot">✦</span><span>СОБЫТИЕ ГОДА (ПО МНЕНИЮ СЛАВЫ)</span></div>
+    <div class="hint">Нажми на конверт — <b>письмо ждёт</b></div>
+    <button class="btn" id="openBtn" type="button"><span>Открыть приглашение</span><span class="btn-arrow" aria-hidden="true">↗</span></button>
   </div>
 </div>
 
@@ -471,12 +443,7 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
     <div class="name">Слава зовёт — отмазки не канают 🍻</div>
     <p class="lead">Баня, пруд, шашлык и компания, которая нажрётся раньше, чем мясо дожарится. Кто не приедет — тот еблан, потом не жалуйся.</p>
     <div class="pill">🗓️ Родился 1 декабря, бухаем 5-го — печень уже в предвкушении.<br>📍 Штыковские пруды, Приморский край, район Артём</div>
-    <div class="hero-actions" aria-label="Действия с приглашением">
-      <a class="action-primary" href="#rsvp">Подтвердить участие <span aria-hidden="true">↗</span></a>
-      <button class="action-secondary" id="calendarBtn" type="button">＋ В календарь</button>
-    </div>
-
-    <div class="count" id="countdown">
+    кнопки<div class="count" id="countdown">
       <div class="cell"><div class="n" id="cd-d">–</div><div class="l">дней</div></div>
       <div class="cell"><div class="n" id="cd-h">–</div><div class="l">часов</div></div>
       <div class="cell"><div class="n" id="cd-m">–</div><div class="l">минут</div></div>
@@ -506,25 +473,6 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
           <div class="ico">🧖</div><h3>Как</h3>
           <p>Приходи к 15:00. <b>Купальник — по желанию, тосты — обязанность.</b> Кто приедет трезвым — тем хуже для него.</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="rsvp" class="rsvp-section">
-    <div class="wrap rsvp-wrap">
-      <div class="section-eyebrow reveal">ПЛАНЫ НА 5 ДЕКАБРЯ</div>
-      <h2 class="sec-title reveal">Ну что, будешь? 🥂</h2>
-      <p class="sec-sub reveal">Дай Славе понять, сколько мяса брать. Выбери ответ и отправь его в Telegram — сообщение подготовится автоматически.</p>
-      <div class="rsvp-card reveal">
-        <div class="rsvp-options" role="group" aria-label="Выбери ответ">
-          <button class="rsvp-option selected" type="button" data-status="Буду! Ждите меня 🎉" aria-pressed="true"><span class="option-icon">✦</span><span><strong>Буду!</strong><small>Меня считать</small></span></button>
-          <button class="rsvp-option" type="button" data-status="К сожалению, не смогу 😔" aria-pressed="false"><span class="option-icon">↗</span><span><strong>Не смогу</strong><small>В этот раз мимо</small></span></button>
-          <button class="rsvp-option" type="button" data-status="Пока не знаю, сообщу позже 🤔" aria-pressed="false"><span class="option-icon">…</span><span><strong>Пока не знаю</strong><small>Отвечу позже</small></span></button>
-        </div>
-        <label class="rsvp-label" for="guestName">Как тебя подписать? <span>необязательно</span></label>
-        <input class="rsvp-input" id="guestName" type="text" maxlength="50" autocomplete="name" placeholder="Твоё имя">
-        <button class="rsvp-send" id="sendRsvp" type="button">Отправить ответ в Telegram <span aria-hidden="true">↗</span></button>
-        <p class="rsvp-note">Откроется Telegram с готовым сообщением — останется выбрать чат Славы и нажать «Отправить».</p>
       </div>
     </div>
   </section>
@@ -768,37 +716,7 @@ tick(); setInterval(tick, 1000);
 })();
 </script>
 
-<script>
-/* ===== Календарь и подтверждение участия ===== */
-(function(){
-  const eventTitle = 'День рождения Славы · Штыковские пруды';
-  const eventDescription = 'Баня, шашлык и компания. Встречаемся 5 декабря 2026 года в 15:00.';
-  const eventLocation = 'Арт-парк «Штыковские пруды», Приморский край, Россия';
-  const startUtc = '20261205T050000Z';
-  const endUtc = '20261205T080000Z';
-  function downloadCalendar(){
-    const esc = value => String(value).replace(/\\/g,'\\\\').replace(/\n/g,'\\n').replace(/,/g,'\\,').replace(/;/g,'\\;');
-    const lines = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Slava Birthday Invitation//RU','CALSCALE:GREGORIAN','METHOD:PUBLISH','BEGIN:VEVENT','UID:slava-birthday-20261205@slava-dr.ru','DTSTAMP:'+new Date().toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,'').replace(/Z$/,'Z'),'DTSTART:'+startUtc,'DTEND:'+endUtc,'SUMMARY:'+esc(eventTitle),'DESCRIPTION:'+esc(eventDescription),'LOCATION:'+esc(eventLocation),'END:VEVENT','END:VCALENDAR'];
-    const blob = new Blob([lines.join('\r\n')+'\r\n'],{type:'text/calendar;charset=utf-8'});
-    const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href=url; a.download='slava-birthday-2026.ics'; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(url),1000);
-  }
-  const calendarBtn = document.getElementById('calendarBtn');
-  if(calendarBtn) calendarBtn.addEventListener('click',downloadCalendar);
-  const options = Array.from(document.querySelectorAll('.rsvp-option'));
-  let chosenStatus = options[0] ? options[0].dataset.status : 'Буду! Ждите меня 🎉';
-  options.forEach(button=>button.addEventListener('click',()=>{
-    chosenStatus=button.dataset.status;
-    options.forEach(option=>{const active=option===button;option.classList.toggle('selected',active);option.setAttribute('aria-pressed',String(active));});
-  }));
-  const send = document.getElementById('sendRsvp');
-  if(send) send.addEventListener('click',()=>{
-    const name = (document.getElementById('guestName').value || '').trim().slice(0,50);
-    const text = 'Привет, Слава! '+(name ? 'Это '+name+'. ' : '')+'По приглашению на 5 декабря: '+chosenStatus;
-    const url = 'https://t.me/share/url?url='+encodeURIComponent('https://slava-dr.ru/')+'&text='+encodeURIComponent(text);
-    window.open(url,'_blank','noopener,noreferrer');
-  });
-})();
-</script>
+
 
 </body>
 </html>
